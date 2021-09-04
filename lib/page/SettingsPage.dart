@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -10,11 +11,9 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Settings'),
-      ),
-      body: Text('TODO'),
+    return SettingsScreen(
+      title: 'Settings',
+      children: [],
     );
   }
 }
