@@ -16,6 +16,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.settings),
+          ),
+        ],
       ),
       body: StaggeredGridView.countBuilder(
         crossAxisCount: 4,
