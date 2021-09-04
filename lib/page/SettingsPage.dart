@@ -15,6 +15,12 @@ class _SettingsPageState extends State<SettingsPage> {
       title: 'Settings',
       children: [
         TextInputSettingsTile(
+          title: 'City',
+          settingKey: 'city',
+          borderColor: Theme.of(context).accentColor,
+          errorColor: Theme.of(context).errorColor,
+        ),
+        TextInputSettingsTile(
           title: 'API Key',
           settingKey: 'api-key',
           obscureText: true,
