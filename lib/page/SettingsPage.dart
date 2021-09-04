@@ -17,6 +17,7 @@ class _SettingsPageState extends State<SettingsPage> {
         TextInputSettingsTile(
           title: 'City',
           settingKey: 'city',
+          initialValue: 'London',
           borderColor: Theme.of(context).accentColor,
           errorColor: Theme.of(context).errorColor,
         ),
