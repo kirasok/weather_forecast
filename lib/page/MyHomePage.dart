@@ -38,19 +38,44 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<Widget> _widgets = <Widget>[
-    Row(
+    // Temperature
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text('+14'),
-        Icon(Icons.access_alarm),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('+14'),
+            Icon(Icons.access_alarm),
+          ],
+        ),
+        Text('Real feel +13'),
+        Text('Updated 19:04'),
       ],
     ),
+    // Wind
     Column(
-      children: [Icon(Icons.arrow_back_rounded), Text('4 m/s')],
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(Icons.arrow_back_rounded),
+        Text('4 m/s'),
+        Text('Gusts 9 m/s'),
+      ],
     ),
+    // Precipitation
     Text('4 mm'),
+    // Pressure
     Text('1000 hPa'),
+    // Humidity
     Text('90%'),
+    // Clouds
+    Text('100%'),
+    // UV-index
     Text('0'),
-    Text('3'),
+    // Visibility
+    Text('10 km'),
   ];
 }
