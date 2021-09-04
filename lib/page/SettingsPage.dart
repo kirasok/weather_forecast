@@ -13,7 +13,15 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return SettingsScreen(
       title: 'Settings',
-      children: [],
+      children: [
+        TextInputSettingsTile(
+          title: 'API Key',
+          settingKey: 'api-key',
+          obscureText: true,
+          borderColor: Theme.of(context).accentColor,
+          errorColor: Theme.of(context).errorColor,
+        ),
+      ],
     );
   }
 }
