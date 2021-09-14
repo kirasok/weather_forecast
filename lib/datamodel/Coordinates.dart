@@ -1,13 +1,13 @@
 class Coordinates {
-  double lan, lon;
+  double lat, lon;
 
   Coordinates({
-    required this.lan,
+    required this.lat,
     required this.lon,
   });
 
   factory Coordinates.fromJson(Map<String, dynamic> json) => Coordinates(
-        lan: json['lan'] as double,
+        lat: json['lat'] as double,
         lon: json['lon'] as double,
       );
 }

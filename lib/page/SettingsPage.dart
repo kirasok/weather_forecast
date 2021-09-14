@@ -23,7 +23,7 @@ class _SettingsPageState extends State<SettingsPage> {
           initialValue: 'London',
           onChange: (String value) async {
             Coordinates coordinates = await fetchCoordinates(http.Client());
-            Settings.setValue<String>('lan', coordinates.lan.toString());
+            Settings.setValue<String>('lat', coordinates.lat.toString());
             Settings.setValue<String>('lon', coordinates.lon.toString());
           },
           borderColor: Theme.of(context).accentColor,
@@ -39,7 +39,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         TextInputSettingsTile(
           title: 'Latitude',
-          settingKey: 'lan',
+          settingKey: 'lat',
           keyboardType:
               TextInputType.numberWithOptions(signed: true, decimal: true),
           borderColor: Theme.of(context).accentColor,
