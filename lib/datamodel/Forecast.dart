@@ -14,11 +14,11 @@ class Forecast extends HiveObject {
   @HiveField(4)
   final Current current;
   @HiveField(5)
-  final List<Minutely> minutely;
+  final HiveList<Minutely> minutely;
   @HiveField(6)
-  final List<Hourly> hourly;
+  final HiveList<Hourly> hourly;
   @HiveField(7)
-  final List<Daily> daily;
+  final HiveList<Daily> daily;
 
   Forecast({
     required this.lat,
@@ -52,7 +52,7 @@ class Weather {
 }
 
 @HiveType(typeId: 2)
-class Current {
+class Current extends HiveObject {
   @HiveField(0)
   final int dt;
   @HiveField(1)
@@ -104,7 +104,7 @@ class Current {
 }
 
 @HiveType(typeId: 3)
-class Minutely {
+class Minutely extends HiveObject {
   @HiveField(0)
   final int dt;
   @HiveField(1)
@@ -117,7 +117,7 @@ class Minutely {
 }
 
 @HiveType(typeId: 4)
-class Hourly {
+class Hourly extends HiveObject {
   @HiveField(0)
   final Current current;
   @HiveField(1)
@@ -130,7 +130,7 @@ class Hourly {
 }
 
 @HiveType(typeId: 5)
-class Temp {
+class Temp extends HiveObject {
   @HiveField(0)
   final double morn;
   @HiveField(1)
@@ -155,7 +155,7 @@ class Temp {
 }
 
 @HiveType(typeId: 6)
-class Feels_like {
+class Feels_like extends HiveObject {
   @HiveField(0)
   final double morn;
   @HiveField(1)
@@ -174,7 +174,7 @@ class Feels_like {
 }
 
 @HiveType(typeId: 7)
-class Daily {
+class Daily extends HiveObject {
   @HiveField(0)
   final int dt;
   @HiveField(1)
