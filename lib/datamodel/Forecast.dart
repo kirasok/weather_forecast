@@ -1,5 +1,9 @@
-class Forecast {
-  final double lat, lon;
+import 'package:hive_flutter/hive_flutter.dart';
+
+@HiveType(typeId: 0)
+class Forecast extends HiveObject {
+  final double lat;
+  final double lon;
   final String timezone;
   final int timezone_offset;
 
@@ -20,9 +24,12 @@ class Forecast {
   });
 }
 
+@HiveType(typeId: 1)
 class Weather {
   final int id;
-  final String main, description, icon;
+  final String main;
+  final String description;
+  final String icon;
 
   Weather({
     required this.id,
@@ -32,21 +39,22 @@ class Weather {
   });
 }
 
+@HiveType(typeId: 2)
 class Current {
   final int dt;
-  final double temp,
-      feels_like,
-      pressure,
-      humidity,
-      dew_point,
-      uvi,
-      clouds,
-      visibility,
-      wind_speed,
-      wind_gust, // Where available
-      wind_deg,
-      rain, // Where available
-      snow; // Where available
+  final double temp;
+  final double feels_like;
+  final double pressure;
+  final double humidity;
+  final double dew_point;
+  final double uvi;
+  final double clouds;
+  final double visibility;
+  final double wind_speed;
+  final double wind_gust; // Where available
+  final double wind_deg;
+  final double rain; // Where available
+  final double snow; // Where available
   final Weather weather;
 
   Current({
@@ -68,6 +76,7 @@ class Current {
   });
 }
 
+@HiveType(typeId: 3)
 class Minutely {
   final int dt;
   final double precipitation;
@@ -78,6 +87,7 @@ class Minutely {
   });
 }
 
+@HiveType(typeId: 4)
 class Hourly {
   final Current current;
   final double pop;
@@ -88,8 +98,14 @@ class Hourly {
   });
 }
 
+@HiveType(typeId: 5)
 class Temp {
-  final double morn, day, eve, night, min, max;
+  final double morn;
+  final double day;
+  final double eve;
+  final double night;
+  final double min;
+  final double max;
 
   Temp({
     required this.morn,
@@ -101,8 +117,12 @@ class Temp {
   });
 }
 
+@HiveType(typeId: 6)
 class Feels_like {
-  final double morn, day, eve, night;
+  final double morn;
+  final double day;
+  final double eve;
+  final double night;
 
   Feels_like({
     required this.morn,
@@ -112,22 +132,26 @@ class Feels_like {
   });
 }
 
+@HiveType(typeId: 7)
 class Daily {
-  final int dt, sunrise, sunset, moonrise, moonset;
+  final int dt;
+  final int sunrise;
+  final int sunset;
+  final int moonrise;
+  final int moonset;
   final double moon_phase;
   final Temp temp;
   final Feels_like feels_like;
-  final double pressure,
-      humidity,
-      dew_point,
-      wind_speed,
-      wind_gust, // Where available
-      wind_deg,
-      clouds,
-      uvi,
-      pop,
-      rain, // Where available
-      snow; // Where available
+  final double pressure;
+  final double humidity;
+  final double dew_point;
+  final double wind_speed;
+  final double wind_gust; // Where available
+  final double wind_deg, clouds;
+  final double uvi;
+  final double pop;
+  final double rain; // Where available
+  final double snow; // Where available
   final Weather weather;
 
   Daily({
