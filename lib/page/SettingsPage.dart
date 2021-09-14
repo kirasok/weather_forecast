@@ -26,7 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Settings.setValue<String>('lat', coordinates.lat.toString());
             Settings.setValue<String>('lon', coordinates.lon.toString());
           },
-          borderColor: Theme.of(context).accentColor,
+          borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
         ),
         TextInputSettingsTile(
@@ -34,7 +34,7 @@ class _SettingsPageState extends State<SettingsPage> {
           settingKey: 'lon',
           keyboardType:
               TextInputType.numberWithOptions(signed: true, decimal: true),
-          borderColor: Theme.of(context).accentColor,
+          borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
         ),
         TextInputSettingsTile(
@@ -42,14 +42,14 @@ class _SettingsPageState extends State<SettingsPage> {
           settingKey: 'lat',
           keyboardType:
               TextInputType.numberWithOptions(signed: true, decimal: true),
-          borderColor: Theme.of(context).accentColor,
+          borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
         ),
         TextInputSettingsTile(
           title: 'API Key',
           settingKey: 'api-key',
           obscureText: true,
-          borderColor: Theme.of(context).accentColor,
+          borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
         ),
       ],
