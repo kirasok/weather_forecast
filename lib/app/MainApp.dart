@@ -8,7 +8,6 @@ class MainApp extends StatelessWidget {
       title: 'Weather Forecast',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        accentColor: Colors.amberAccent,
       ),
       home: MyHomePage(title: 'Weather'),
     );
