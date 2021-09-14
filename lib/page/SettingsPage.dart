@@ -25,6 +25,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Coordinates coordinates = await fetchCoordinates(http.Client());
             Settings.setValue<String>('lat', coordinates.lat.toString());
             Settings.setValue<String>('lon', coordinates.lon.toString());
+            setState(() {});
           },
           borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
