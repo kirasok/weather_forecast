@@ -1,5 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
+part 'Forecast.g.dart';
+
 @HiveType(typeId: 0)
 class Forecast extends HiveObject {
   @HiveField(0)
