@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_forecast/Constants.dart';
+import 'package:weather_forecast/datamodel/Forecast.dart';
 
 import 'app/MainApp.dart';
 
@@ -9,6 +10,14 @@ void main() async {
   await Settings.init();
   await Hive.initFlutter();
   await Hive.openBox(Constants.forecast_box);
+  Hive.registerAdapter(ForecastAdapter());
+  Hive.registerAdapter(WeatherAdapter());
+  Hive.registerAdapter(CurrentAdapter());
+  Hive.registerAdapter(MinutelyAdapter());
+  Hive.registerAdapter(HourlyAdapter());
+  Hive.registerAdapter(TempAdapter());
+  Hive.registerAdapter(FeelslikeAdapter());
+  Hive.registerAdapter(DailyAdapter());
   runApp(MainApp());
   Hive.close();
 }
