@@ -30,21 +30,14 @@ class _SettingsPageState extends State<SettingsPage> {
           borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
         ),
-        TextInputSettingsTile(
-          title: 'Longitude',
-          settingKey: 'lon',
-          keyboardType:
-              TextInputType.numberWithOptions(signed: true, decimal: true),
-          borderColor: Theme.of(context).colorScheme.secondary,
-          errorColor: Theme.of(context).errorColor,
+        // TODO: use same TextStyle
+        ListTile(
+          title: Text('Longitude'),
+          subtitle: Text(Settings.getValue('lon', '')),
         ),
-        TextInputSettingsTile(
-          title: 'Latitude',
-          settingKey: 'lat',
-          keyboardType:
-              TextInputType.numberWithOptions(signed: true, decimal: true),
-          borderColor: Theme.of(context).colorScheme.secondary,
-          errorColor: Theme.of(context).errorColor,
+        ListTile(
+          title: Text('Latitude'),
+          subtitle: Text(Settings.getValue('lat', '')),
         ),
         TextInputSettingsTile(
           title: 'API Key',
