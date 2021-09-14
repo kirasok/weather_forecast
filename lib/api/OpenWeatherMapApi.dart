@@ -14,7 +14,6 @@ Future<Coordinates> fetchCoordinates(http.Client client) async {
   );
 
   if (response.statusCode == 200) {
-    print(response.body);
     return parseCoordinates(response.body);
   } else {
     throw Exception("Failed to lad coordinates");
