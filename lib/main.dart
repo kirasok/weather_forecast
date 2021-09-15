@@ -10,6 +10,12 @@ void main() async {
   await Settings.init();
   await Hive.initFlutter();
   await Hive.openBox(Constants.forecast_box);
+  await registerAdapters();
+  runApp(MainApp());
+  Hive.close();
+}
+
+Future<void> registerAdapters() async {
   Hive.registerAdapter(ForecastAdapter());
   Hive.registerAdapter(WeatherAdapter());
   Hive.registerAdapter(CurrentAdapter());
@@ -18,6 +24,4 @@ void main() async {
   Hive.registerAdapter(TempAdapter());
   Hive.registerAdapter(FeelslikeAdapter());
   Hive.registerAdapter(DailyAdapter());
-  runApp(MainApp());
-  Hive.close();
 }
