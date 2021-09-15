@@ -146,19 +146,19 @@ class Current extends HiveObject {
     json.putIfAbsent('snow', () => -1);
     return Current(
       dt: json['dt'],
-      temp: json['temp'],
-      feels_like: json['feels_like'],
-      pressure: json['pressure'],
-      humidity: json['humidity'],
-      dew_point: json['dew_point'],
-      clouds: json['clouds'],
-      uvi: json['uvi'],
-      visibility: json['visibility'],
-      wind_speed: json['wind_speed'],
-      wind_gust: json['wind_gust'],
-      wind_deg: json['wind_deg'],
-      rain: json['rain'],
-      snow: json['snow'],
+      temp: json['temp'] * 1.0,
+      feels_like: json['feels_like'] * 1.0,
+      pressure: json['pressure'] * 1.0, // In Dart you cannot directly put int value to double
+      humidity: json['humidity'] * 1.0,
+      dew_point: json['dew_point'] * 1.0,
+      clouds: json['clouds'] * 1.0,
+      uvi: json['uvi'] * 1.0,
+      visibility: json['visibility'] * 1.0,
+      wind_speed: json['wind_speed'] * 1.0,
+      wind_gust: json['wind_gust'] * 1.0,
+      wind_deg: json['wind_deg'] * 1.0,
+      rain: json['rain'] * 1.0,
+      snow: json['snow'] * 1.0,
       weather: Weather.fromJson(json['weather']['0']),
     );
   }
@@ -178,7 +178,7 @@ class Minutely extends HiveObject {
 
   static Minutely fromJson(Map<String, dynamic> json) => Minutely(
         dt: json['dt'],
-        precipitation: json['precipitation'],
+        precipitation: json['precipitation'] * 1.0,
       );
 }
 
@@ -196,7 +196,7 @@ class Hourly extends HiveObject {
 
   static Hourly fromJson(Map<String, dynamic> json) => Hourly(
         current: Current.fromJson(json),
-        pop: json['pop'],
+        pop: json['pop'] * 1.0,
       );
 }
 
@@ -225,12 +225,12 @@ class Temp extends HiveObject {
   });
 
   static Temp fromJson(Map<String, dynamic> json) => Temp(
-        morn: json['morn'],
-        day: json['day'],
-        eve: json['eve'],
-        night: json['night'],
-        min: json['min'],
-        max: json['max'],
+        morn: json['morn'] * 1.0,
+        day: json['day'] * 1.0,
+        eve: json['eve'] * 1.0,
+        night: json['night'] * 1.0,
+        min: json['min'] * 1.0,
+        max: json['max'] * 1.0,
       );
 }
 
@@ -253,10 +253,10 @@ class Feels_like extends HiveObject {
   });
 
   static Feels_like fromJson(Map<String, dynamic> json) => Feels_like(
-        morn: json['morn'],
-        day: json['day'],
-        eve: json['eve'],
-        night: json['night'],
+        morn: json['morn'] * 1.0,
+        day: json['day'] * 1.0,
+        eve: json['eve'] * 1.0,
+        night: json['night'] * 1.0,
       );
 }
 
@@ -338,20 +338,20 @@ class Daily extends HiveObject {
       sunset: json['sunset'],
       moonrise: json['moonrise'],
       moonset: json['moonset'],
-      moon_phase: json['moon_phase'],
+      moon_phase: json['moon_phase'] * 1.0,
       temp: Temp.fromJson(json['temp']),
       feels_like: Feels_like.fromJson(json['feels_like3']),
-      pressure: json['pressure'],
-      humidity: json['humidity'],
-      dew_point: json['dew_point'],
-      wind_speed: json['wind_speed'],
-      wind_gust: json['wind_gust'],
-      wind_deg: json['wind_deg'],
-      clouds: json['clouds'],
-      uvi: json['uvi'],
-      pop: json['pop'],
-      rain: json['rain'],
-      snow: json['snow'],
+      pressure: json['pressure'] * 1.0,
+      humidity: json['humidity'] * 1.0,
+      dew_point: json['dew_point'] * 1.0,
+      wind_speed: json['wind_speed'] * 1.0,
+      wind_gust: json['wind_gust'] * 1.0,
+      wind_deg: json['wind_deg'] * 1.0,
+      clouds: json['clouds'] * 1.0,
+      uvi: json['uvi'] * 1.0,
+      pop: json['pop'] * 1.0,
+      rain: json['rain'] * 1.0,
+      snow: json['snow'] * 1.0,
       weather: json['weather'],
     );
   }
