@@ -1,5 +1,4 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:weather_forecast/Constants.dart';
 
 part 'Forecast.g.dart';
 
@@ -17,11 +16,11 @@ class Forecast extends HiveObject {
   @HiveField(4)
   final Current current;
   @HiveField(5)
-  final HiveList<Minutely> minutely;
+  final List<Minutely> minutely;
   @HiveField(6)
-  final HiveList<Hourly> hourly;
+  final List<Hourly> hourly;
   @HiveField(7)
-  final HiveList<Daily> daily;
+  final List<Daily> daily;
 
   Forecast({
     required this.lat,
@@ -40,23 +39,17 @@ class Forecast extends HiveObject {
         timezone: json['timezone'],
         timezone_offset: json['timezone_offset'],
         current: Current.fromJson(json['current']),
-        minutely: HiveList(
-          Hive.box(Constants.forecast_box),
-          objects: List.generate(
-            61,
-            (index) => Minutely.fromJson(json['minutely'][index]),
-          ),
+        minutely: List.generate(
+          61,
+          (index) => Minutely.fromJson(json['minutely'][index]),
         ),
-        hourly: HiveList(
-          Hive.box(Constants.forecast_box),
-          objects: List.generate(
-            48,
-            (index) => Hourly.fromJson(json['hourly'][index]),
-          ),
+        hourly: List.generate(
+          48,
+          (index) => Hourly.fromJson(json['hourly'][index]),
         ),
-        daily: HiveList(
-          Hive.box(Constants.forecast_box),
-          objects: List.generate(8, (index) => json['daily'][index]),
+        daily: List.generate(
+          8,
+          (index) => Daily.fromJson(json['daily'][index]),
         ),
       );
 }
@@ -141,14 +134,17 @@ class Current extends HiveObject {
   static Current fromJson(Map<String, dynamic> json) {
     // Ensure that this keys present in map
     // Set their value to -1 to know that this keys was not present in the response
+    var temp = Map<String, dynamic>();
+    temp['1h'] = -1;
     json.putIfAbsent('wind_gust', () => -1);
-    json.putIfAbsent('rain', () => -1);
-    json.putIfAbsent('snow', () => -1);
+    json.putIfAbsent('rain', () => temp);
+    json.putIfAbsent('snow', () => temp);
     return Current(
       dt: json['dt'],
       temp: json['temp'] * 1.0,
       feels_like: json['feels_like'] * 1.0,
-      pressure: json['pressure'] * 1.0, // In Dart you cannot directly put int value to double
+      pressure: json['pressure'] * 1.0,
+      // In Dart you cannot directly put int value to double
       humidity: json['humidity'] * 1.0,
       dew_point: json['dew_point'] * 1.0,
       clouds: json['clouds'] * 1.0,
@@ -157,9 +153,9 @@ class Current extends HiveObject {
       wind_speed: json['wind_speed'] * 1.0,
       wind_gust: json['wind_gust'] * 1.0,
       wind_deg: json['wind_deg'] * 1.0,
-      rain: json['rain'] * 1.0,
-      snow: json['snow'] * 1.0,
-      weather: Weather.fromJson(json['weather']['0']),
+      rain: json['rain']['1h'] * 1.0,
+      snow: json['snow']['1h'] * 1.0,
+      weather: Weather.fromJson(json['weather'][0]),
     );
   }
 }
@@ -340,7 +336,7 @@ class Daily extends HiveObject {
       moonset: json['moonset'],
       moon_phase: json['moon_phase'] * 1.0,
       temp: Temp.fromJson(json['temp']),
-      feels_like: Feels_like.fromJson(json['feels_like3']),
+      feels_like: Feels_like.fromJson(json['feels_like']),
       pressure: json['pressure'] * 1.0,
       humidity: json['humidity'] * 1.0,
       dew_point: json['dew_point'] * 1.0,
@@ -352,7 +348,7 @@ class Daily extends HiveObject {
       pop: json['pop'] * 1.0,
       rain: json['rain'] * 1.0,
       snow: json['snow'] * 1.0,
-      weather: json['weather'],
+      weather: Weather.fromJson(json['weather'][0]),
     );
   }
 }
