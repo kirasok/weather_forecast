@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:http/http.dart' as http;
+import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 
 import 'SettingsPage.dart';
 
@@ -13,6 +15,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+
+    fetchForecast(http.Client());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
