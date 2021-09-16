@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_forecast/Constants.dart';
 import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
 
+import '../database/HiveUtils.dart';
 import 'ForecastPage.dart';
 import 'SettingsPage.dart';
 
@@ -50,8 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
           future: forecast,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              Hive.box(Constants.forecast_box).put(
-                  DateTime.now().toUtc().toIso8601String(), snapshot.data!);
+              putForecast(snapshot.data!);
               return ForecastPage();
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
