@@ -46,24 +46,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              FutureBuilder<Forecast>(
-                future: forecast,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    putForecast(snapshot.data!);
-                    return ForecastPage();
-                  } else if (snapshot.hasError) {
-                    return Text('${snapshot.error}');
-                  }
+          child: FutureBuilder<Forecast>(
+            future: forecast,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                putForecast(snapshot.data!);
+                return ForecastPage();
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
 
-                  return const CircularProgressIndicator();
-                },
-              ),
-            ],
+              return const CircularProgressIndicator();
+            },
           ),
         ));
   }
