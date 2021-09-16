@@ -9,10 +9,9 @@ import 'app/MainApp.dart';
 void main() async {
   await Settings.init();
   await Hive.initFlutter();
-  await Hive.openBox(Constants.forecast_box);
   await registerAdapters();
+  await Hive.openBox(Constants.forecast_box);
   runApp(MainApp());
-  Hive.close();
 }
 
 Future<void> registerAdapters() async {
