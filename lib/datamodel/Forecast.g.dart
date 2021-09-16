@@ -22,9 +22,9 @@ class ForecastAdapter extends TypeAdapter<Forecast> {
       timezone: fields[2] as String,
       timezone_offset: fields[3] as int,
       current: fields[4] as Current,
-      minutely: (fields[5] as HiveList).castHiveList(),
-      hourly: (fields[6] as HiveList).castHiveList(),
-      daily: (fields[7] as HiveList).castHiveList(),
+      minutely: (fields[5] as List).cast<Minutely>(),
+      hourly: (fields[6] as List).cast<Hourly>(),
+      daily: (fields[7] as List).cast<Daily>(),
     );
   }
 
