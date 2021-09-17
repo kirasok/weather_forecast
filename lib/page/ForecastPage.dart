@@ -38,75 +38,116 @@ class _ForecastPageState extends State<ForecastPage>
         return StaggeredGridView.count(
           crossAxisCount: 4,
           staggeredTiles: List.filled(9, StaggeredTile.fit(2)),
-          children: [
-            Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(forecast.current.weather.id.toString()),
-                  Text(forecast.current.weather.main.toString()),
-                  Text(forecast.current.weather.description.toString()),
-                  Text(forecast.current.weather.icon.toString()),
-                ],
-              ),
-            ),
-            Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(forecast.current.temp.toString()),
-                  Text('Feels Like: ' + forecast.current.feels_like.toString()),
-                ],
-              ),
-            ),
-            Card(
-              child: Text(forecast.current.pressure.toString()),
-            ),
-            Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(forecast.current.humidity.toString()),
-                  Text(forecast.current.dew_point.toString()),
-                ],
-              ),
-            ),
-            Card(
-              child: Text(forecast.current.uvi.toString()),
-            ),
-            Card(
-              child: Text(forecast.current.clouds.toString()),
-            ),
-            Card(
-              child: Text(forecast.current.visibility.toString()),
-            ),
-            Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(forecast.current.wind_deg.toString()),
-                  Text(forecast.current.wind_speed.toString()),
-                  Text(forecast.current.wind_gust.toString()),
-                ],
-              ),
-            ),
-            Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(forecast.current.rain.toString()),
-                  Text(forecast.current.snow.toString()),
-                ],
-              ),
-            ),
-          ],
+          children: getWidgets(forecast),
         );
       },
     );
+  }
+
+  List<Widget> getWidgets(Forecast forecast) {
+    List<Widget> widgets = [];
+
+    // Weather
+    widgets.add(
+      Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(forecast.current.weather.id.toString()),
+            Text(forecast.current.weather.main.toString()),
+            Text(forecast.current.weather.description.toString()),
+            Text(forecast.current.weather.icon.toString()),
+          ],
+        ),
+      ),
+    );
+
+    // Temp
+    widgets.add(
+      Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(forecast.current.temp.toString()),
+            Text('Feels Like: ' + forecast.current.feels_like.toString()),
+          ],
+        ),
+      ),
+    );
+
+    // Pressure
+    widgets.add(
+      Card(
+        child: Text(forecast.current.pressure.toString()),
+      ),
+    );
+
+    // Humidity
+    widgets.add(
+      Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(forecast.current.humidity.toString()),
+            Text(forecast.current.dew_point.toString()),
+          ],
+        ),
+      ),
+    );
+
+    // Uvi
+    widgets.add(
+      Card(
+        child: Text(forecast.current.uvi.toString()),
+      ),
+    );
+
+    // Clouds
+    widgets.add(
+      Card(
+        child: Text(forecast.current.clouds.toString()),
+      ),
+    );
+
+    // Visibility
+    widgets.add(
+      Card(
+        child: Text(forecast.current.visibility.toString()),
+      ),
+    );
+
+    // Wind
+    widgets.add(
+      Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(forecast.current.wind_deg.toString()),
+            Text(forecast.current.wind_speed.toString()),
+            Text(forecast.current.wind_gust.toString()),
+          ],
+        ),
+      ),
+    );
+
+    // Precipitation
+    widgets.add(
+      Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(forecast.current.rain.toString()),
+            Text(forecast.current.snow.toString()),
+          ],
+        ),
+      ),
+    );
+
+    return widgets;
   }
 }
