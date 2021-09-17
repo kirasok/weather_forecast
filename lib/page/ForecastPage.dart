@@ -37,12 +37,17 @@ class _ForecastPageState extends State<ForecastPage>
         Forecast forecast = box.values.last;
         return StaggeredGridView.count(
           crossAxisCount: 4,
-          staggeredTiles: List.filled(2, StaggeredTile.fit(1)),
+          staggeredTiles: List.filled(2, StaggeredTile.fit(2)),
           children: [
             Card(
-              child: Text(forecast.current.temp.toString() +
-                  '\nFells Like: ' +
-                  forecast.current.feels_like.toString()),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(forecast.current.temp.toString()),
+                  Text('Feels Like: ' + forecast.current.feels_like.toString()),
+                ],
+              ),
             ),
             Card(
               child: Text(forecast.current.pressure.toString()),
