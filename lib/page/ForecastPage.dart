@@ -48,17 +48,21 @@ class _ForecastPageState extends State<ForecastPage>
     List<Widget> widgets = [];
 
     // Weather
+    String description = forecast.current.weather.description[0].toUpperCase() +
+        forecast.current.weather.description.substring(1);
     widgets.add(
       Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(forecast.current.weather.id.toString()),
-            Text(forecast.current.weather.main.toString()),
-            Text(forecast.current.weather.description.toString()),
-            Text(forecast.current.weather.icon.toString()),
-          ],
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.network(
+                  'https://openweathermap.org/img/wn/${forecast.current.weather.icon}@2x.png'),
+              Text(description),
+            ],
+          ),
         ),
       ),
     );
