@@ -2,9 +2,9 @@ String toKelvin(double temp) {
   return temp.toString() + ' K';
 }
 
-String toCelsium(double temp) {
-  double celsium = temp - 273.15;
-  return celsium.toString() + ' °C';
+String toCelsius(double temp) {
+  double celsius = temp - 273.15;
+  return celsius.toString() + ' °C';
 }
 
 String toFahrenheit(double temp) {
