@@ -1,5 +1,4 @@
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
-import 'package:intl/intl.dart';
 import 'package:weather_forecast/enum/format/DateTimeFormat.dart';
 import 'package:weather_forecast/enum/units/Pressure.dart';
 import 'package:weather_forecast/enum/units/Speed.dart';
@@ -73,8 +72,8 @@ String getDateTime(DateTime dateTime) {
   switch (format) {
     case DateTimeFormat.System:
       // TODO: use System locale
-      return DateFormat('y-M-d H:m').format(dateTime);
+      return dateTime.toString();
     case DateTimeFormat.yyyyMMddHHmm:
-      return DateFormat('y-M-d H:m').format(dateTime);
+      return dateTime.toIso8601String();
   }
 }
