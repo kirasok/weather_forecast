@@ -1,4 +1,5 @@
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:weather_forecast/enum/units/Pressure.dart';
 import 'package:weather_forecast/enum/units/Temp.dart';
 
 String toKelvin(double temp) {
@@ -37,5 +38,17 @@ String getTemp(double temp) {
       return toKelvin(temp);
     case Temp.Celsius:
       return toCelsius(temp);
+  }
+}
+
+String getPressure(double pressure) {
+  Pressure format = Settings.getValue<Pressure>('pressure', Pressure.hPa);
+  switch(format) {
+    case Pressure.hPa:
+      return toHPa(pressure);
+    case Pressure.kPa:
+      return toKPa(pressure);
+    case Pressure.mmHg:
+      return toMmHg(pressure);
   }
 }
