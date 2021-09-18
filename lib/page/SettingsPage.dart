@@ -69,9 +69,8 @@ class _SettingsPageState extends State<SettingsPage> {
             RadioModalSettingsTile(
               title: 'Temperature',
               settingKey: 'temp',
-              selected: Units.Temp.System,
+              selected: Units.Temp.Kelvin,
               values: <Units.Temp, String>{
-                Units.Temp.System: 'System',
                 Units.Temp.Kelvin: 'Kelvin',
                 Units.Temp.Celsius: 'Celsius',
               },
@@ -79,9 +78,8 @@ class _SettingsPageState extends State<SettingsPage> {
             RadioModalSettingsTile(
               title: 'Pressure',
               settingKey: 'pressure',
-              selected: Pressure.System,
+              selected: Pressure.hPa,
               values: <Pressure, String>{
-                Pressure.System: 'System',
                 Pressure.hPa: 'hPa',
                 Pressure.kPa: 'kPa',
                 Pressure.mmHg: 'mmHg',
@@ -90,9 +88,8 @@ class _SettingsPageState extends State<SettingsPage> {
             RadioModalSettingsTile(
               title: 'Speed',
               settingKey: 'speed',
-              selected: Speed.System,
+              selected: Speed.ms,
               values: <Speed, String>{
-                Speed.System: 'System',
                 Speed.ms: 'm/s',
                 Speed.kmh: 'km/h',
               },
