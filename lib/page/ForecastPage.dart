@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_forecast/Constants.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/utils/Utils.dart';
 
 class ForecastPage extends StatefulWidget {
   const ForecastPage({Key? key}) : super(key: key);
@@ -74,8 +75,8 @@ class _ForecastPageState extends State<ForecastPage>
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(forecast.current.temp.toString()),
-            Text('Feels Like: ' + forecast.current.feels_like.toString()),
+            Text(getTemp(forecast.current.temp)),
+            Text('Feels Like: ' + getTemp(forecast.current.feels_like)),
           ],
         ),
       ),
