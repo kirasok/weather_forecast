@@ -5,6 +5,10 @@ import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Coordinates.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/enum/format/DateTimeFormat.dart';
+import 'package:weather_forecast/enum/units/Pressure.dart';
+import 'package:weather_forecast/enum/units/Speed.dart';
+import 'package:weather_forecast/enum/units/Temp.dart' as Units;
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -56,41 +60,41 @@ class _SettingsPageState extends State<SettingsPage> {
             RadioModalSettingsTile(
               title: 'Date and time',
               settingKey: 'datetime',
-              selected: 0,
-              values: <int, String>{
-                0: 'System',
-                1: 'yyyy-MM-dd HH:mm',
+              selected: DateTimeFormat.System,
+              values: <DateTimeFormat, String>{
+                DateTimeFormat.System: 'System',
+                DateTimeFormat.yyyyMMddHHmm: 'yyyy-MM-dd HH:mm',
               },
             ),
             RadioModalSettingsTile(
               title: 'Temperature',
               settingKey: 'temp',
-              selected: 0,
-              values: <int, String>{
-                0: 'System',
-                1: 'Kelvin',
-                2: 'Celsius',
+              selected: Units.Temp.System,
+              values: <Units.Temp, String>{
+                Units.Temp.System: 'System',
+                Units.Temp.Kelvin: 'Kelvin',
+                Units.Temp.Celsius: 'Celsius',
               },
             ),
             RadioModalSettingsTile(
               title: 'Pressure',
               settingKey: 'pressure',
-              selected: 0,
-              values: <int, String>{
-                0: 'System',
-                1: 'hPa',
-                2: 'kPa',
-                3: 'mmHg',
+              selected: Pressure.System,
+              values: <Pressure, String>{
+                Pressure.System: 'System',
+                Pressure.hPa: 'hPa',
+                Pressure.kPa: 'kPa',
+                Pressure.mmHg: 'mmHg',
               },
             ),
             RadioModalSettingsTile(
               title: 'Speed',
               settingKey: 'speed',
-              selected: 0,
-              values: <int, String>{
-                0: 'System',
-                1: 'm/s',
-                2: 'km/h',
+              selected: Speed.System,
+              values: <Speed, String>{
+                Speed.System: 'System',
+                Speed.ms: 'm/s',
+                Speed.kmh: 'km/h',
               },
             ),
           ],
