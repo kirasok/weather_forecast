@@ -78,8 +78,9 @@ class _SettingsPageState extends State<SettingsPage> {
               selected: 0,
               values: <int, String>{
                 0: 'System',
-                3: 'kPa',
-                4: 'mmHg',
+                1: 'hPa',
+                2: 'kPa',
+                3: 'mmHg',
               },
             ),
             RadioModalSettingsTile(
