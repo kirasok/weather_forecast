@@ -50,6 +50,50 @@ class _SettingsPageState extends State<SettingsPage> {
           borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
         ),
+        SettingsGroup(
+          title: 'Localization',
+          children: [
+            RadioModalSettingsTile(
+              title: 'Date and time',
+              settingKey: 'datetime',
+              selected: 0,
+              values: <int, String>{
+                0: 'System',
+                1: 'yyyy-MM-dd HH:mm',
+              },
+            ),
+            RadioModalSettingsTile(
+              title: 'Temperature',
+              settingKey: 'temp',
+              selected: 0,
+              values: <int, String>{
+                0: 'System',
+                1: 'Kelvin',
+                2: 'Celsius',
+              },
+            ),
+            RadioModalSettingsTile(
+              title: 'Pressure',
+              settingKey: 'pressure',
+              selected: 0,
+              values: <int, String>{
+                0: 'System',
+                3: 'kPa',
+                4: 'mmHg',
+              },
+            ),
+            RadioModalSettingsTile(
+              title: 'Speed',
+              settingKey: 'speed',
+              selected: 0,
+              values: <int, String>{
+                0: 'System',
+                1: 'm/s',
+                2: 'km/h',
+              },
+            ),
+          ],
+        ),
       ],
     );
   }
