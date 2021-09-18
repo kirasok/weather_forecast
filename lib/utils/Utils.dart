@@ -1,5 +1,6 @@
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:weather_forecast/enum/units/Pressure.dart';
+import 'package:weather_forecast/enum/units/Speed.dart';
 import 'package:weather_forecast/enum/units/Temp.dart';
 
 String toKelvin(double temp) {
@@ -50,5 +51,15 @@ String getPressure(double pressure) {
       return toKPa(pressure);
     case Pressure.mmHg:
       return toMmHg(pressure);
+  }
+}
+
+String getSpeed(double speed) {
+  Speed format = Settings.getValue<Speed>('speed', Speed.ms);
+  switch(format) {
+    case Speed.ms:
+      return toMS(speed);
+    case Speed.kmh:
+      return toKmH(speed);
   }
 }
