@@ -18,3 +18,11 @@ String toKPa(double pressure) {
 String toMmHg(double pressure) {
   return (pressure * 0.7500616827).toString() + ' mmHg';
 }
+
+String toMS(double speed) {
+  return speed.toString() + ' m/s';
+}
+
+String toKmH(double speed) {
+  return (speed * 3.6).toString() + ' km/h';
+}
