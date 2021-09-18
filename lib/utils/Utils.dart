@@ -1,4 +1,7 @@
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:intl/date_symbol_data_file.dart';
+import 'package:intl/intl.dart';
+import 'package:weather_forecast/enum/format/DateTimeFormat.dart';
 import 'package:weather_forecast/enum/units/Pressure.dart';
 import 'package:weather_forecast/enum/units/Speed.dart';
 import 'package:weather_forecast/enum/units/Temp.dart';
@@ -61,5 +64,17 @@ String getSpeed(double speed) {
       return toMS(speed);
     case Speed.kmh:
       return toKmH(speed);
+  }
+}
+
+String getDateTime(DateTime dateTime) {
+  DateTimeFormat format = Settings.getValue<DateTimeFormat>('datetime', DateTimeFormat.System);
+  dateTime = dateTime.toLocal();
+  switch(format) {
+    case DateTimeFormat.System:
+      // TODO: use System locale
+      return DateFormat('y-M-d H:m').format(dateTime);
+    case DateTimeFormat.yyyyMMddHHmm:
+      return DateFormat('y-M-d H:m').format(dateTime);
   }
 }
