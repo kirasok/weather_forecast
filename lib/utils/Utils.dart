@@ -1,3 +1,6 @@
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:weather_forecast/enum/units/Temp.dart';
+
 String toKelvin(double temp) {
   return temp.toString() + ' K';
 }
@@ -25,4 +28,14 @@ String toMS(double speed) {
 
 String toKmH(double speed) {
   return (speed * 3.6).toString() + ' km/h';
+}
+
+String getTemp(double temp) {
+  Temp format = Settings.getValue<Temp>('temp', Temp.Kelvin);
+  switch(format) {
+    case Temp.Kelvin:
+      return toKelvin(temp);
+    case Temp.Celsius:
+      return toCelsius(temp);
+  }
 }
