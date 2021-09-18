@@ -1,0 +1,4 @@
+enum DateTimeFormat {
+  System,
+  yyyyMMddHHmm,
+}
