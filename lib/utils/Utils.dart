@@ -7,7 +7,14 @@ String toCelsius(double temp) {
   return celsius.toString() + ' °C';
 }
 
-String toFahrenheit(double temp) {
-  double fahrenheit = ((temp - 273.15) * 9) / 5 + 32;
-  return fahrenheit.toString() + ' °F';
+String toHPa(double pressure) {
+  return pressure.toString() + ' hPa';
+}
+
+String toKPa(double pressure) {
+  return (pressure / 10).toString() + ' kPa';
+}
+
+String toMmHg(double pressure) {
+  return (pressure * 0.7500616827).toString() + ' mmHg';
 }
