@@ -1,5 +1,4 @@
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
-import 'package:intl/date_symbol_data_file.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_forecast/enum/format/DateTimeFormat.dart';
 import 'package:weather_forecast/enum/units/Pressure.dart';
@@ -37,7 +36,7 @@ String toKmH(double speed) {
 
 String getTemp(double temp) {
   Temp format = Settings.getValue<Temp>('temp', Temp.Kelvin);
-  switch(format) {
+  switch (format) {
     case Temp.Kelvin:
       return toKelvin(temp);
     case Temp.Celsius:
@@ -47,7 +46,7 @@ String getTemp(double temp) {
 
 String getPressure(double pressure) {
   Pressure format = Settings.getValue<Pressure>('pressure', Pressure.hPa);
-  switch(format) {
+  switch (format) {
     case Pressure.hPa:
       return toHPa(pressure);
     case Pressure.kPa:
@@ -59,7 +58,7 @@ String getPressure(double pressure) {
 
 String getSpeed(double speed) {
   Speed format = Settings.getValue<Speed>('speed', Speed.ms);
-  switch(format) {
+  switch (format) {
     case Speed.ms:
       return toMS(speed);
     case Speed.kmh:
@@ -68,9 +67,10 @@ String getSpeed(double speed) {
 }
 
 String getDateTime(DateTime dateTime) {
-  DateTimeFormat format = Settings.getValue<DateTimeFormat>('datetime', DateTimeFormat.System);
+  DateTimeFormat format =
+      Settings.getValue<DateTimeFormat>('datetime', DateTimeFormat.System);
   dateTime = dateTime.toLocal();
-  switch(format) {
+  switch (format) {
     case DateTimeFormat.System:
       // TODO: use System locale
       return DateFormat('y-M-d H:m').format(dateTime);
