@@ -3,11 +3,12 @@ import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_forecast/Constants.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/utils/MyCacheProvider.dart';
 
 import 'app/MainApp.dart';
 
 void main() async {
-  await Settings.init();
+  await Settings.init(cacheProvider: MyCacheProvider());
   await Hive.initFlutter();
   await registerAdapters();
   await Hive.openBox(Constants.forecast_box);
