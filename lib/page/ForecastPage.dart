@@ -95,6 +95,23 @@ class _ForecastPageState extends State<ForecastPage>
       ),
     );
 
+    // Wind
+    widgets.add(
+      Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            WindIcon(
+              degree: forecast.current.wind_deg,
+            ),
+            Text('Wind speed: ' + getSpeed(forecast.current.wind_speed)),
+            getWindGust(forecast.current.wind_gust),
+          ],
+        ),
+      ),
+    );
+
     // Pressure
     widgets.add(
       Card(
@@ -165,23 +182,6 @@ class _ForecastPageState extends State<ForecastPage>
                 forecast.current.visibility.toString() +
                 ' km'),
           ),
-        ),
-      ),
-    );
-
-    // Wind
-    widgets.add(
-      Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            WindIcon(
-              degree: forecast.current.wind_deg,
-            ),
-            Text('Wind speed: ' + getSpeed(forecast.current.wind_speed)),
-            getWindGust(forecast.current.wind_gust),
-          ],
         ),
       ),
     );
