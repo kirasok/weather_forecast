@@ -5,32 +5,32 @@ import 'package:weather_forecast/enum/units/Speed.dart';
 import 'package:weather_forecast/enum/units/Temp.dart';
 
 String toKelvin(double temp) {
-  return temp.toString() + ' K';
+  return temp.toStringAsFixed(2) + ' K';
 }
 
 String toCelsius(double temp) {
   double celsius = temp - 273.15;
-  return celsius.toString() + ' °C';
+  return celsius.toStringAsFixed(2) + ' °C';
 }
 
 String toHPa(double pressure) {
-  return pressure.toString() + ' hPa';
+  return pressure.toStringAsFixed(2) + ' hPa';
 }
 
 String toKPa(double pressure) {
-  return (pressure / 10).toString() + ' kPa';
+  return (pressure / 10).toStringAsFixed(2) + ' kPa';
 }
 
 String toMmHg(double pressure) {
-  return (pressure * 0.7500616827).toString() + ' mmHg';
+  return (pressure * 0.7500616827).toStringAsFixed(2) + ' mmHg';
 }
 
 String toMS(double speed) {
-  return speed.toString() + ' m/s';
+  return speed.toStringAsFixed(2) + ' m/s';
 }
 
 String toKmH(double speed) {
-  return (speed * 3.6).toString() + ' km/h';
+  return (speed * 3.6).toStringAsFixed(2) + ' km/h';
 }
 
 String getTemp(double temp) {
