@@ -133,7 +133,12 @@ class _ForecastPageState extends State<ForecastPage>
     // Clouds
     widgets.add(
       Card(
-        child: Text(forecast.current.clouds.toString()),
+        child: Container(
+          padding: EdgeInsets.all(8),
+          child: Center(
+            child: Text('Clouds: ' + forecast.current.clouds.toString() + '%'),
+          ),
+        ),
       ),
     );
 
