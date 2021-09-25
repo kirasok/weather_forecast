@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_forecast/Constants.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/utils/Utils.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class ForecastPage extends StatefulWidget {
   const ForecastPage({Key? key}) : super(key: key);
@@ -148,8 +149,9 @@ class _ForecastPageState extends State<ForecastPage>
         child: Container(
           padding: EdgeInsets.all(8),
           child: Center(
-            child: Text(
-                'Visibility: ' + forecast.current.visibility.toString() + ' km'),
+            child: Text('Visibility: ' +
+                forecast.current.visibility.toString() +
+                ' km'),
           ),
         ),
       ),
@@ -162,9 +164,11 @@ class _ForecastPageState extends State<ForecastPage>
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(forecast.current.wind_deg.toString()),
-            Text(forecast.current.wind_speed.toString()),
-            Text(forecast.current.wind_gust.toString()),
+            WindIcon(
+              degree: forecast.current.wind_deg,
+            ),
+            Text('Wind speed: ' + getSpeed(forecast.current.wind_speed)),
+            getWindGust(forecast.current.wind_gust),
           ],
         ),
       ),
@@ -185,5 +189,12 @@ class _ForecastPageState extends State<ForecastPage>
     );
 
     return widgets;
+  }
+
+  Widget getWindGust(double gust) {
+    if (gust < 0)
+      return Text('');
+    else
+      return Text('Gusts: ' + getSpeed(gust));
   }
 }
