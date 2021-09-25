@@ -72,13 +72,16 @@ class _ForecastPageState extends State<ForecastPage>
     // Temp
     widgets.add(
       Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(getTemp(forecast.current.temp)),
-            Text('Feels Like: ' + getTemp(forecast.current.feels_like)),
-          ],
+        child: Container(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(getTemp(forecast.current.temp)),
+              Text('Feels Like: ' + getTemp(forecast.current.feels_like)),
+            ],
+          ),
         ),
       ),
     );
