@@ -145,7 +145,13 @@ class _ForecastPageState extends State<ForecastPage>
     // Visibility
     widgets.add(
       Card(
-        child: Text(forecast.current.visibility.toString()),
+        child: Container(
+          padding: EdgeInsets.all(8),
+          child: Center(
+            child: Text(
+                'Visibility: ' + forecast.current.visibility.toString() + ' km'),
+          ),
+        ),
       ),
     );
 
