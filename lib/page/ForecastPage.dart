@@ -99,13 +99,16 @@ class _ForecastPageState extends State<ForecastPage>
     // Humidity
     widgets.add(
       Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(forecast.current.humidity.toString()),
-            Text(forecast.current.dew_point.toString()),
-          ],
+        child: Container(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('Humidity: ' + forecast.current.humidity.toString() + '%'),
+              Text('Dew Point: ' + getTemp(forecast.current.dew_point)),
+            ],
+          ),
         ),
       ),
     );
