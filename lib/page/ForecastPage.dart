@@ -39,7 +39,7 @@ class _ForecastPageState extends State<ForecastPage>
         Forecast forecast = box.values.last;
         return StaggeredGridView.count(
           crossAxisCount: 4,
-          staggeredTiles: List.filled(9, StaggeredTile.fit(2)),
+          staggeredTiles: List.filled(8, StaggeredTile.fit(2)),
           children: getWidgets(forecast),
         );
       },
@@ -176,31 +176,6 @@ class _ForecastPageState extends State<ForecastPage>
         ),
       ),
     );
-
-    // Precipitation
-    if (forecast.current.rain >= 0 || forecast.current.snow >= 0) {
-      List<Widget> children = [];
-      if (forecast.current.rain >= 0)
-        children.add(
-          Text('Rain: ' + forecast.current.rain.toString() + ' mm'),
-        );
-      if (forecast.current.snow >= 0)
-        children.add(
-          Text('Snow: ' + forecast.current.snow.toString() + ' mm'),
-        );
-      widgets.add(
-        Card(
-          child: Container(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: children,
-            ),
-          ),
-        ),
-      );
-    }
 
     return widgets;
   }
