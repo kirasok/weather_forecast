@@ -39,7 +39,16 @@ class _ForecastPageState extends State<ForecastPage>
         Forecast forecast = box.values.last;
         return StaggeredGridView.count(
           crossAxisCount: 4,
-          staggeredTiles: List.filled(8, StaggeredTile.fit(2)),
+          staggeredTiles: [
+            StaggeredTile.fit(2),
+            StaggeredTile.fit(2),
+            StaggeredTile.fit(2),
+            StaggeredTile.fit(2),
+            StaggeredTile.fit(2),
+            StaggeredTile.fit(2),
+            StaggeredTile.fit(2),
+            StaggeredTile.fit(2),
+          ],
           children: getWidgets(forecast),
         );
       },
