@@ -85,7 +85,14 @@ class _ForecastPageState extends State<ForecastPage>
     // Pressure
     widgets.add(
       Card(
-        child: Text(forecast.current.pressure.toString()),
+        child: Container(
+          padding: EdgeInsets.all(8),
+          child: Center(
+            child: Text(
+              'Pressure: ' + getPressure(forecast.current.pressure),
+            ),
+          ),
+        ),
       ),
     );
 
