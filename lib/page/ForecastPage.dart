@@ -41,6 +41,7 @@ class _ForecastPageState extends State<ForecastPage>
           crossAxisCount: 4,
           staggeredTiles: [
             StaggeredTile.fit(4),
+            StaggeredTile.fit(4),
             StaggeredTile.fit(2),
             StaggeredTile.fit(2),
             StaggeredTile.fit(2),
@@ -87,6 +88,17 @@ class _ForecastPageState extends State<ForecastPage>
               Text('Feels Like: ' + getTemp(forecast.current.feels_like)),
             ],
           ),
+        ),
+      ),
+    );
+
+    // Details row
+    widgets.add(
+      Container(
+        padding: EdgeInsets.fromLTRB(24, 8, 0, 8),
+        child: Text(
+          'Today Details',
+          style: Theme.of(context).textTheme.subtitle2,
         ),
       ),
     );
