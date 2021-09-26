@@ -143,7 +143,7 @@ class _ForecastPageState extends State<ForecastPage>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Humidity: ' + forecast.current.humidity.toString() + '%'),
+              Text('Humidity: ' + toPercentage(forecast.current.humidity)),
               Text('Dew Point: ' + getTemp(forecast.current.dew_point)),
             ],
           ),
@@ -174,7 +174,7 @@ class _ForecastPageState extends State<ForecastPage>
         child: Container(
           padding: EdgeInsets.all(8),
           child: Center(
-            child: Text('Clouds: ' + forecast.current.clouds.toString() + '%'),
+            child: Text('Clouds: ' + toPercentage(forecast.current.clouds)),
           ),
         ),
       ),
@@ -186,9 +186,9 @@ class _ForecastPageState extends State<ForecastPage>
         child: Container(
           padding: EdgeInsets.all(8),
           child: Center(
-            child: Text('Visibility: ' +
-                forecast.current.visibility.toString() +
-                ' km'),
+            child: Text(
+              'Visibility: ' + toDistance(forecast.current.visibility),
+            ),
           ),
         ),
       ),

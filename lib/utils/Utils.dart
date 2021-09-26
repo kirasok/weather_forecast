@@ -1,37 +1,34 @@
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:intl/intl.dart';
 import 'package:weather_forecast/enum/format/DateTimeFormat.dart';
 import 'package:weather_forecast/enum/units/Pressure.dart';
 import 'package:weather_forecast/enum/units/Speed.dart';
 import 'package:weather_forecast/enum/units/Temp.dart';
 
-String toKelvin(double temp) {
-  return temp.toStringAsFixed(2) + ' K';
+String formatDouble(double value) {
+  NumberFormat formatter = NumberFormat();
+  formatter.minimumFractionDigits = 0;
+  formatter.maximumFractionDigits = 2;
+  return formatter.format(value);
 }
 
-String toCelsius(double temp) {
-  double celsius = temp - 273.15;
-  return celsius.toStringAsFixed(2) + ' °C';
-}
+String toKelvin(double temp) => formatDouble(temp) + ' K';
 
-String toHPa(double pressure) {
-  return pressure.toStringAsFixed(2) + ' hPa';
-}
+String toCelsius(double temp) => formatDouble((temp - 273.15)) + ' °C';
 
-String toKPa(double pressure) {
-  return (pressure / 10).toStringAsFixed(2) + ' kPa';
-}
+String toHPa(double pressure) => formatDouble(pressure) + ' hPa';
 
-String toMmHg(double pressure) {
-  return (pressure * 0.7500616827).toStringAsFixed(2) + ' mmHg';
-}
+String toKPa(double pressure) => formatDouble(pressure / 10) + ' kPa';
 
-String toMS(double speed) {
-  return speed.toStringAsFixed(2) + ' m/s';
-}
+String toMmHg(double pressure) => formatDouble((pressure * 0.7500616827)) + ' mmHg';
 
-String toKmH(double speed) {
-  return (speed * 3.6).toStringAsFixed(2) + ' km/h';
-}
+String toMS(double speed) => formatDouble(speed) + ' m/s';
+
+String toKmH(double speed) => formatDouble((speed * 3.6)) + ' km/h';
+
+String toPercentage(double percentage) => formatDouble(percentage) + '%';
+
+String toDistance(double distance) => formatDouble(distance) + ' m';
 
 String getTemp(double temp) {
   Temp format = Settings.getValue<Temp>('temp', Temp.Kelvin);
