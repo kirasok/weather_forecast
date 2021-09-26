@@ -8,6 +8,12 @@ class MainApp extends StatelessWidget {
       title: 'Weather Forecast',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        cardTheme: CardTheme(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+          elevation: 5,
+          margin: EdgeInsets.all(12),
+        ),
       ),
       home: MyHomePage(title: 'Weather'),
     );

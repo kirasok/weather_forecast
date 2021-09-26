@@ -40,8 +40,7 @@ class _ForecastPageState extends State<ForecastPage>
         return StaggeredGridView.count(
           crossAxisCount: 4,
           staggeredTiles: [
-            StaggeredTile.fit(2),
-            StaggeredTile.fit(2),
+            StaggeredTile.fit(4),
             StaggeredTile.fit(2),
             StaggeredTile.fit(2),
             StaggeredTile.fit(2),
@@ -63,31 +62,28 @@ class _ForecastPageState extends State<ForecastPage>
         forecast.current.weather.description.substring(1);
     widgets.add(
       Card(
+        margin: EdgeInsets.fromLTRB(12, 24, 12, 12),
+        elevation: 8,
         child: Container(
           padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.network(
-                  'https://openweathermap.org/img/wn/${forecast.current.weather.icon}@2x.png'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.network(
+                      'https://openweathermap.org/img/wn/${forecast.current.weather.icon}@2x.png'),
+                  Text(
+                    getTemp(forecast.current.temp),
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                ],
+              ),
               Text(description),
-            ],
-          ),
-        ),
-      ),
-    );
-
-    // Temp
-    widgets.add(
-      Card(
-        child: Container(
-          padding: EdgeInsets.all(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(getTemp(forecast.current.temp)),
+              SizedBox(height: 8),
               Text('Feels Like: ' + getTemp(forecast.current.feels_like)),
             ],
           ),
