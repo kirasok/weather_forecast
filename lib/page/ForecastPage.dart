@@ -21,19 +21,22 @@ class _ForecastPageState extends State<ForecastPage> {
       valueListenable: Hive.box(Constants.forecast_box).listenable(),
       builder: (context, Box box, _) {
         Forecast forecast = box.values.last;
-        return StaggeredGridView.count(
-          crossAxisCount: 4,
-          staggeredTiles: [
-            StaggeredTile.fit(4),
-            StaggeredTile.fit(4),
-            StaggeredTile.fit(2),
-            StaggeredTile.fit(2),
-            StaggeredTile.fit(2),
-            StaggeredTile.fit(2),
-            StaggeredTile.fit(2),
-            StaggeredTile.fit(2),
-          ],
-          children: getWidgets(forecast),
+        return DefaultTabController(
+          length: 3,
+          child: StaggeredGridView.count(
+            crossAxisCount: 4,
+            staggeredTiles: [
+              StaggeredTile.fit(4),
+              StaggeredTile.fit(4),
+              StaggeredTile.fit(2),
+              StaggeredTile.fit(2),
+              StaggeredTile.fit(2),
+              StaggeredTile.fit(2),
+              StaggeredTile.fit(2),
+              StaggeredTile.fit(2),
+            ],
+            children: getWidgets(forecast),
+          ),
         );
       },
     );
