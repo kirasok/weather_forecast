@@ -51,6 +51,7 @@ class _ForecastPageState extends State<ForecastPage> {
                     ),
                     // Hourly for 48h
                     ListView.builder(
+                      padding: EdgeInsets.all(16),
                       itemCount: forecast.hourly.length,
                       itemBuilder: (context, index) =>
                           HourlyListTile(hourly: forecast.hourly[index]),
