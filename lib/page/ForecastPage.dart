@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_forecast/Constants.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/utils/Utils.dart';
+import 'package:weather_forecast/widget/HourlyListTile.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class ForecastPage extends StatefulWidget {
@@ -49,7 +50,11 @@ class _ForecastPageState extends State<ForecastPage> {
                       children: getWidgets(forecast),
                     ),
                     // Hourly for 48h
-                    Text('2'),
+                    ListView.builder(
+                      itemCount: forecast.hourly.length,
+                      itemBuilder: (context, index) =>
+                          HourlyListTile(hourly: forecast.hourly[index]),
+                    ),
                     // Daily for 7d
                     Text('3'),
                   ],
