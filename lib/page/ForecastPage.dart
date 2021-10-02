@@ -14,7 +14,6 @@ class ForecastPage extends StatefulWidget {
 }
 
 class _ForecastPageState extends State<ForecastPage> {
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -23,19 +22,41 @@ class _ForecastPageState extends State<ForecastPage> {
         Forecast forecast = box.values.last;
         return DefaultTabController(
           length: 3,
-          child: StaggeredGridView.count(
-            crossAxisCount: 4,
-            staggeredTiles: [
-              StaggeredTile.fit(4),
-              StaggeredTile.fit(4),
-              StaggeredTile.fit(2),
-              StaggeredTile.fit(2),
-              StaggeredTile.fit(2),
-              StaggeredTile.fit(2),
-              StaggeredTile.fit(2),
-              StaggeredTile.fit(2),
+          child: Column(
+            children: [
+              TabBar(
+                tabs: [
+                  Tab(icon: Icon(Icons.directions_car)),
+                  Tab(icon: Icon(Icons.directions_transit)),
+                  Tab(icon: Icon(Icons.directions_bike)),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    // Current
+                    StaggeredGridView.count(
+                      crossAxisCount: 4,
+                      staggeredTiles: [
+                        StaggeredTile.fit(4),
+                        StaggeredTile.fit(4),
+                        StaggeredTile.fit(2),
+                        StaggeredTile.fit(2),
+                        StaggeredTile.fit(2),
+                        StaggeredTile.fit(2),
+                        StaggeredTile.fit(2),
+                        StaggeredTile.fit(2),
+                      ],
+                      children: getWidgets(forecast),
+                    ),
+                    // Hourly for 48h
+                    Text('2'),
+                    // Daily for 7d
+                    Text('3'),
+                  ],
+                ),
+              ),
             ],
-            children: getWidgets(forecast),
           ),
         );
       },
