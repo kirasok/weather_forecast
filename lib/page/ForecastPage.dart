@@ -13,23 +13,7 @@ class ForecastPage extends StatefulWidget {
   _ForecastPageState createState() => _ForecastPageState();
 }
 
-class _ForecastPageState extends State<ForecastPage>
-    with TickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _tabController = TabController(length: 3, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-
-    super.dispose();
-  }
+class _ForecastPageState extends State<ForecastPage> {
 
   @override
   Widget build(BuildContext context) {
