@@ -24,12 +24,11 @@ class _ForecastPageState extends State<ForecastPage> {
           length: 3,
           child: Column(
             children: [
-              TabBar(
-                tabs: [
-                  Tab(icon: Icon(Icons.directions_car)),
-                  Tab(icon: Icon(Icons.directions_transit)),
-                  Tab(icon: Icon(Icons.directions_bike)),
-                ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                child: TabPageSelector(
+                  indicatorSize: 6,
+                ),
               ),
               Expanded(
                 child: TabBarView(
