@@ -20,7 +20,10 @@ dependencies:
   hive_flutter: ^1.1.0
   weather_icons: ^3.0.0
   intl: ^0.17.0
-  fl_chart: ^0.40.0
+  charts_flutter:
+    git:
+      url: git://github.com/google/charts.git
+      path: charts_flutter
 
 dev_dependencies:
   flutter_test:
