@@ -140,7 +140,7 @@ class Current extends HiveObject {
     json.putIfAbsent('rain', () => temp);
     json.putIfAbsent('snow', () => temp);
     return Current(
-      dt: json['dt'],
+      dt: json['dt'] * 1000,
       temp: json['temp'] * 1.0,
       feels_like: json['feels_like'] * 1.0,
       pressure: json['pressure'] * 1.0,
@@ -173,7 +173,7 @@ class Minutely extends HiveObject {
   });
 
   static Minutely fromJson(Map<String, dynamic> json) => Minutely(
-        dt: json['dt'],
+        dt: json['dt'] * 1000,
         precipitation: json['precipitation'] * 1.0,
       );
 }
@@ -329,11 +329,11 @@ class Daily extends HiveObject {
     json.putIfAbsent('rain', () => -1);
     json.putIfAbsent('snow', () => -1);
     return Daily(
-      dt: json['dt'],
-      sunrise: json['sunrise'],
-      sunset: json['sunset'],
-      moonrise: json['moonrise'],
-      moonset: json['moonset'],
+      dt: json['dt'] * 1000,
+      sunrise: json['sunrise'] * 1000,
+      sunset: json['sunset'] * 1000,
+      moonrise: json['moonrise'] * 1000,
+      moonset: json['moonset'] * 1000,
       moon_phase: json['moon_phase'] * 1.0,
       temp: Temp.fromJson(json['temp']),
       feels_like: Feels_like.fromJson(json['feels_like']),
