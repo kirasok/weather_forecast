@@ -40,6 +40,16 @@ String getTemp(double temp) {
   }
 }
 
+double getTempWithoutUnit(double temp) {
+  Temp format = Settings.getValue<Temp>('temp', Temp.Kelvin);
+  switch(format) {
+    case Temp.Kelvin:
+      return temp;
+    case Temp.Celsius:
+      return (temp - 273.15);
+  }
+}
+
 String getPressure(double pressure) {
   Pressure format = Settings.getValue<Pressure>('pressure', Pressure.hPa);
   switch (format) {
