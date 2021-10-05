@@ -1,3 +1,4 @@
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -57,7 +58,24 @@ class _ForecastPageState extends State<ForecastPage> {
                           HourlyListTile(hourly: forecast.hourly[index]),
                     ),
                     // Daily for 7d
-                    Text('3'),
+                    ListView(
+                      padding: EdgeInsets.all(24),
+                      children: [
+                        SizedBox(
+                          height: 300,
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: charts.TimeSeriesChart(
+                                forecast.getTempData(),
+                                animate: false,
+                                defaultRenderer: charts.LineRendererConfig(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

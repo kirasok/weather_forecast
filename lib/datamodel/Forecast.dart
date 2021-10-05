@@ -1,4 +1,6 @@
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:weather_forecast/utils/Utils.dart';
 
 part 'Forecast.g.dart';
 
@@ -52,6 +54,103 @@ class Forecast extends HiveObject {
           (index) => Daily.fromJson(json['daily'][index]),
         ),
       );
+
+  List<charts.Series<TempData, DateTime>> getTempData() {
+    final min = List.generate(
+      daily.length,
+      (index) => TempData(
+        DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+        daily[index].temp.min,
+      ),
+    );
+    final max = List.generate(
+      daily.length,
+      (index) => TempData(
+        DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+        daily[index].temp.max,
+      ),
+    );
+    final morn = List.generate(
+      daily.length,
+      (index) => TempData(
+        DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+        daily[index].temp.morn,
+      ),
+    );
+    final day = List.generate(
+      daily.length,
+      (index) => TempData(
+        DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+        daily[index].temp.day,
+      ),
+    );
+    final eve = List.generate(
+      daily.length,
+      (index) => TempData(
+        DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+        daily[index].temp.eve,
+      ),
+    );
+    final night = List.generate(
+      daily.length,
+      (index) => TempData(
+        DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+        daily[index].temp.night,
+      ),
+    );
+
+    return [
+      charts.Series<TempData, DateTime>(
+        id: 'Min',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (TempData data, _) => data.dt,
+        measureFn: (TempData data, _) => getTempWithoutUnit(data.temp),
+        data: min,
+      ),
+      charts.Series<TempData, DateTime>(
+        id: 'Max',
+        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+        domainFn: (TempData data, _) => data.dt,
+        measureFn: (TempData data, _) => getTempWithoutUnit(data.temp),
+        data: max,
+      ),
+      charts.Series<TempData, DateTime>(
+        id: 'Morning',
+        colorFn: (_, __) => charts.MaterialPalette.yellow.shadeDefault,
+        domainFn: (TempData data, _) => data.dt,
+        measureFn: (TempData data, _) => getTempWithoutUnit(data.temp),
+        data: morn,
+      ),
+      charts.Series<TempData, DateTime>(
+        id: 'Day',
+        colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+        domainFn: (TempData data, _) => data.dt,
+        measureFn: (TempData data, _) => getTempWithoutUnit(data.temp),
+        data: day,
+      ),
+      charts.Series<TempData, DateTime>(
+        id: 'Evening',
+        colorFn: (_, __) => charts.MaterialPalette.teal.shadeDefault,
+        domainFn: (TempData data, _) => data.dt,
+        measureFn: (TempData data, _) => getTempWithoutUnit(data.temp),
+        data: eve,
+      ),
+      charts.Series<TempData, DateTime>(
+        id: 'Night',
+        colorFn: (_, __) => charts.MaterialPalette.gray.shadeDefault,
+        domainFn: (TempData data, _) => data.dt,
+        measureFn: (TempData data, _) => getTempWithoutUnit(data.temp),
+        data: night,
+      ),
+    ];
+  }
+}
+
+class TempData {
+  final DateTime dt;
+  final double temp;
+
+  TempData(this.dt, this.temp);
 }
 
 @HiveType(typeId: 1)
