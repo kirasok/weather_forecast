@@ -47,6 +47,7 @@ class _ForecastPageState extends State<ForecastPage> {
                         StaggeredTile.fit(2),
                         StaggeredTile.fit(2),
                         StaggeredTile.fit(2),
+                        StaggeredTile.fit(4),
                       ],
                       children: getWidgets(forecast),
                     ),
@@ -287,6 +288,23 @@ class _ForecastPageState extends State<ForecastPage> {
         ),
       ),
     );
+
+    // Precipitation
+    widgets.add(Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: 150,
+          child: charts.BarChart(
+            forecast.getMinutely(),
+            animate: false,
+            behaviors: [
+              charts.SeriesLegend(),
+            ],
+          ),
+        ),
+      ),
+    ));
 
     return widgets;
   }
