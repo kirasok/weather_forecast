@@ -147,6 +147,25 @@ class Forecast extends HiveObject {
     ];
   }
 
+  List<charts.Series<ChartData, DateTime>> getWindSpeedData() {
+    final speed = List.generate(
+      daily.length,
+      (index) => ChartData(
+        DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+        daily[index].wind_speed,
+      ),
+    );
+    return [
+      charts.Series<ChartData, DateTime>(
+        id: 'Wind Speed',
+        colorFn: (_, __) => charts.MaterialPalette.cyan.shadeDefault,
+        domainFn: (ChartData data, _) => data.dt,
+        measureFn: (ChartData data, _) => getSpeedWithoutUnit(data.value),
+        data: speed,
+      ),
+    ];
+  }
+
   List<charts.Series<ChartData, DateTime>> getPressureData() {
     final pressure = List.generate(
       daily.length,

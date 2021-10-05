@@ -80,13 +80,26 @@ class _ForecastPageState extends State<ForecastPage> {
                             child: Padding(
                               padding: EdgeInsets.all(12),
                               child: charts.TimeSeriesChart(
+                                forecast.getWindSpeedData(),
+                                animate: false,
+                                defaultRenderer: charts.LineRendererConfig(),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 200,
+                          child: Card(
+                            child: Padding(
+                              padding: EdgeInsets.all(12),
+                              child: charts.TimeSeriesChart(
                                 forecast.getPressureData(),
                                 animate: false,
                                 defaultRenderer: charts.LineRendererConfig(),
                               ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],

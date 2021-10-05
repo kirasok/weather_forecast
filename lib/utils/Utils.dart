@@ -84,6 +84,16 @@ String getSpeed(double speed) {
   }
 }
 
+double getSpeedWithoutUnit(double speed) {
+  Speed format = Settings.getValue<Speed>('speed', Speed.ms);
+  switch (format) {
+    case Speed.ms:
+      return speed;
+    case Speed.kmh:
+      return speed * 3.6;
+  }
+}
+
 String getDateTime(DateTime dateTime) {
   DateTimeFormat format =
       Settings.getValue<DateTimeFormat>('datetime', DateTimeFormat.System);
