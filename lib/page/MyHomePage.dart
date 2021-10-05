@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
@@ -36,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialPageRoute(
                   builder: (context) => SettingsPage(),
                 ),
-              );
+              ).then(onGoBack);
             },
             icon: Icon(Icons.settings),
           ),
@@ -44,5 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ForecastPage(),
     );
+  }
+
+  FutureOr onGoBack(dynamic value) {
+    setState(() {});
   }
 }
