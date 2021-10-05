@@ -74,6 +74,19 @@ class _ForecastPageState extends State<ForecastPage> {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: 200,
+                          child: Card(
+                            child: Padding(
+                              padding: EdgeInsets.all(12),
+                              child: charts.TimeSeriesChart(
+                                forecast.getPressureData(),
+                                animate: false,
+                                defaultRenderer: charts.LineRendererConfig(),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ],

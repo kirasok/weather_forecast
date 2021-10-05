@@ -62,6 +62,18 @@ String getPressure(double pressure) {
   }
 }
 
+double getPressureWithoutUnit(double pressure) {
+  Pressure format = Settings.getValue<Pressure>('pressure', Pressure.hPa);
+  switch (format) {
+    case Pressure.hPa:
+      return pressure;
+    case Pressure.kPa:
+      return pressure / 10;
+    case Pressure.mmHg:
+      return pressure * 0.7500616827;
+  }
+}
+
 String getSpeed(double speed) {
   Speed format = Settings.getValue<Speed>('speed', Speed.ms);
   switch (format) {
