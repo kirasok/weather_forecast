@@ -57,6 +57,25 @@ class Forecast extends HiveObject {
         ),
       );
 
+  List<charts.Series<ChartData, String>> getMinutely() {
+    final data = List.generate(
+      minutely.length,
+      (index) => ChartData(
+        DateTime.fromMillisecondsSinceEpoch(minutely[index].dt),
+        minutely[index].precipitation,
+      ),
+    );
+    return [
+      charts.Series<ChartData, String>(
+        id: 'Precipitation for next hour',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (ChartData data, _) => data.dt.second.toString(),
+        measureFn: (ChartData data, _) => data.value,
+        data: data,
+      ),
+    ];
+  }
+
   List<charts.Series<ChartData, DateTime>> getTempData() {
     final min = List.generate(
       daily.length,
