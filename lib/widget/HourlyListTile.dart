@@ -30,7 +30,7 @@ class HourlyListTile extends StatelessWidget {
                   child: Text(
                     getDateTime(
                       DateTime.fromMillisecondsSinceEpoch(
-                          hourly.current.dt * 1000,
+                          hourly.current.dt,
                           isUtc: true),
                     ),
                     style: Theme.of(context).textTheme.overline,
