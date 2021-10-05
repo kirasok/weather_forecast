@@ -62,7 +62,7 @@ class _ForecastPageState extends State<ForecastPage> {
                       padding: EdgeInsets.all(24),
                       children: [
                         SizedBox(
-                          height: 300,
+                          height: 500,
                           child: Card(
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
@@ -70,12 +70,18 @@ class _ForecastPageState extends State<ForecastPage> {
                                 forecast.getTempData(),
                                 animate: false,
                                 defaultRenderer: charts.LineRendererConfig(),
+                                behaviors: [
+                                  charts.SeriesLegend(
+                                    desiredMaxColumns: 3,
+                                    desiredMaxRows: 3,
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: 200,
+                          height: 300,
                           child: Card(
                             child: Padding(
                               padding: EdgeInsets.all(12),
@@ -83,12 +89,18 @@ class _ForecastPageState extends State<ForecastPage> {
                                 forecast.getWindSpeedData(),
                                 animate: false,
                                 defaultRenderer: charts.LineRendererConfig(),
+                                behaviors: [
+                                  charts.SeriesLegend(
+                                    desiredMaxColumns: 1,
+                                    desiredMaxRows: 3,
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: 200,
+                          height: 300,
                           child: Card(
                             child: Padding(
                               padding: EdgeInsets.all(12),
@@ -96,6 +108,31 @@ class _ForecastPageState extends State<ForecastPage> {
                                 forecast.getPressureData(),
                                 animate: false,
                                 defaultRenderer: charts.LineRendererConfig(),
+                                behaviors: [
+                                  charts.SeriesLegend(
+                                    desiredMaxColumns: 1,
+                                    desiredMaxRows: 3,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 300,
+                          child: Card(
+                            child: Padding(
+                              padding: EdgeInsets.all(12),
+                              child: charts.TimeSeriesChart(
+                                forecast.getOtherData(),
+                                animate: false,
+                                defaultRenderer: charts.LineRendererConfig(),
+                                behaviors: [
+                                  charts.SeriesLegend(
+                                    desiredMaxColumns: 1,
+                                    desiredMaxRows: 3,
+                                  ),
+                                ],
                               ),
                             ),
                           ),

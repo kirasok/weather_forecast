@@ -182,6 +182,47 @@ class Forecast extends HiveObject {
       )
     ];
   }
+
+  List<charts.Series<ChartData, DateTime>> getOtherData() {
+    final humidity = List.generate(
+      daily.length,
+      (index) => ChartData(DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+          daily[index].humidity),
+    );
+    final clouds = List.generate(
+      daily.length,
+      (index) => ChartData(DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+          daily[index].clouds),
+    );
+    final pop = List.generate(
+      daily.length,
+      (index) => ChartData(DateTime.fromMillisecondsSinceEpoch(daily[index].dt),
+          daily[index].pop),
+    );
+    return [
+      charts.Series<ChartData, DateTime>(
+        id: 'Humidity',
+        colorFn: (_, __) => charts.MaterialPalette.cyan.shadeDefault,
+        domainFn: (ChartData data, _) => data.dt,
+        measureFn: (ChartData data, _) => data.value,
+        data: humidity,
+      ),
+      charts.Series<ChartData, DateTime>(
+        id: 'Clouds',
+        colorFn: (_, __) => charts.MaterialPalette.gray.shadeDefault,
+        domainFn: (ChartData data, _) => data.dt,
+        measureFn: (ChartData data, _) => data.value,
+        data: clouds,
+      ),
+      charts.Series<ChartData, DateTime>(
+        id: 'Probability of precipitation',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (ChartData data, _) => data.dt,
+        measureFn: (ChartData data, _) => data.value,
+        data: pop,
+      ),
+    ];
+  }
 }
 
 class ChartData {
