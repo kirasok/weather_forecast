@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:weather_forecast/widget/NextPageButton.dart';
 
 class WelcomePage extends StatelessWidget {
+
+  // TODO: beautify this widget
+
   const WelcomePage({Key? key}) : super(key: key);
 
   @override
