@@ -14,7 +14,7 @@ class NextPageButton extends StatelessWidget {
       bottom: size.height * 0.05,
       right: size.width * 0.1,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text('Next'),
       ),
     );
