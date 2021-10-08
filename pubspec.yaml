@@ -26,6 +26,7 @@ dependencies:
       path: charts_flutter
   about: ^2.0.1
   cached_network_image: ^3.1.0
+  url_launcher: ^6.0.12
 
 dev_dependencies:
   flutter_test:
