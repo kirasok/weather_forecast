@@ -8,6 +8,7 @@ import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/widget/AppbarIconButton.dart';
 import 'package:weather_forecast/widget/ForecastWidget.dart';
 
+import 'AboutPage.dart';
 import 'SettingsPage.dart';
 
 class ForecastPage extends StatefulWidget {
@@ -48,6 +49,12 @@ class _ForecastPageState extends State<ForecastPage> {
               ).then(onGoBack);
             },
             icon: Icon(Icons.settings),
+          ),
+          AppbarIconButton(
+            onPressed: () async {
+              await AboutPage.showAbout(context);
+            },
+            icon: Icon(Icons.info_outline),
           ),
         ],
       ),
