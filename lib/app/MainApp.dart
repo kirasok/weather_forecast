@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:weather_forecast/page/ForecastPage.dart';
+import 'package:weather_forecast/page/WelcomePage.dart';
 
 class MainApp extends StatelessWidget {
   @override
@@ -16,10 +18,18 @@ class MainApp extends StatelessWidget {
       ),
     );
 
+    var isIntroPlayed = Settings.getValue<bool>('isIntroPlayed', false);
+    Widget home;
+
+    if (isIntroPlayed)
+      home = ForecastPage();
+    else
+      home = WelcomePage();
+
     return MaterialApp(
       title: 'Weather Forecast',
       theme: theme,
-      home: ForecastPage(),
+      home: home,
     );
   }
 }
