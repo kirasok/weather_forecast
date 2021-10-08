@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:http/http.dart' as http;
 import 'package:weather_forecast/Constants.dart';
-import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/widget/AppbarIconButton.dart';
@@ -24,7 +22,7 @@ class _ForecastPageState extends State<ForecastPage> {
   void initState() {
     super.initState();
 
-    fetchForecast(http.Client()).then((value) => putForecast(value));
+    fetchThenPutForecast();
   }
 
   @override
@@ -35,8 +33,7 @@ class _ForecastPageState extends State<ForecastPage> {
         actions: [
           AppbarIconButton(
             onPressed: () async {
-              await fetchForecast(http.Client())
-                  .then((value) => putForecast(value));
+              await fetchThenPutForecast();
               setState(() {});
             },
             icon: Icon(Icons.refresh),
