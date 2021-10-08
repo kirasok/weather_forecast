@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_forecast/page/MyHomePage.dart';
+import 'package:weather_forecast/page/ForecastPage.dart';
 
 class MainApp extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Weather Forecast',
       theme: theme,
-      home: MyHomePage(title: 'Weather'),
+      home: ForecastPage(title: 'Weather'),
     );
   }
 }
