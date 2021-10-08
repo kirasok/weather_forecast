@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -49,8 +50,18 @@ class CurrentForecast extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.network(
-                      'https://openweathermap.org/img/wn/${forecast.current.weather.icon}@2x.png'),
+                  CachedNetworkImage(
+                    imageUrl:
+                        'https://openweathermap.org/img/wn/${forecast.current.weather.icon}@2x.png',
+                    placeholder: (_, __) => SizedBox(
+                      height: 100,
+                      width: 100,
+                    ),
+                    errorWidget: (_, __, ___) => SizedBox(
+                      height: 100,
+                      width: 100,
+                    ),
+                  ),
                   Text(
                     getTemp(forecast.current.temp),
                     style: Theme.of(context).textTheme.headline6,
