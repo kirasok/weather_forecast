@@ -7,6 +7,7 @@ import 'package:weather_forecast/Constants.dart';
 import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/widget/AppbarIconButton.dart';
 import 'package:weather_forecast/widget/ForecastWidget.dart';
 
 import 'SettingsPage.dart';
@@ -32,7 +33,7 @@ class _ForecastPageState extends State<ForecastPage> {
       appBar: AppBar(
         title: Text('Weather'),
         actions: [
-          IconButton(
+          AppbarIconButton(
             onPressed: () async {
               await fetchForecast(http.Client())
                   .then((value) => putForecast(value));
@@ -40,7 +41,7 @@ class _ForecastPageState extends State<ForecastPage> {
             },
             icon: Icon(Icons.refresh),
           ),
-          IconButton(
+          AppbarIconButton(
             onPressed: () {
               Navigator.push(
                 context,
