@@ -7,6 +7,12 @@ import 'package:weather_forecast/utils/MyCacheProvider.dart';
 
 import 'app/MainApp.dart';
 
+// TODO: on scroll up update forecast
+// TODO: add welcome screen where user sets key and city
+// TODO: add about screen
+// TODO: add more datetime formats
+// TODO: use local stored weather icons, not from network
+
 void main() async {
   await Settings.init(cacheProvider: MyCacheProvider());
   await Hive.initFlutter();
