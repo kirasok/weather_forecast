@@ -33,6 +33,14 @@ class _ForecastPageState extends State<ForecastPage> {
         title: Text('Weather'),
         actions: [
           IconButton(
+            onPressed: () async {
+              await fetchForecast(http.Client())
+                  .then((value) => putForecast(value));
+              setState(() {});
+            },
+            icon: Icon(Icons.refresh),
+          ),
+          IconButton(
             onPressed: () {
               Navigator.push(
                 context,
