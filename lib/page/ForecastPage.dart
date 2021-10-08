@@ -14,9 +14,7 @@ import 'package:weather_forecast/widget/HourlyForecast.dart';
 import 'SettingsPage.dart';
 
 class ForecastPage extends StatefulWidget {
-  ForecastPage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  ForecastPage({Key? key}) : super(key: key);
 
   @override
   _ForecastPageState createState() => _ForecastPageState();
@@ -34,7 +32,7 @@ class _ForecastPageState extends State<ForecastPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Weather'),
         actions: [
           IconButton(
             onPressed: () {

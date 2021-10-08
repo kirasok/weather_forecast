@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Weather Forecast',
       theme: theme,
-      home: ForecastPage(title: 'Weather'),
+      home: ForecastPage(),
     );
   }
 }
