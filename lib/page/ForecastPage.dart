@@ -7,9 +7,7 @@ import 'package:weather_forecast/Constants.dart';
 import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
-import 'package:weather_forecast/widget/CurrentForecast.dart';
-import 'package:weather_forecast/widget/DailyForecast.dart';
-import 'package:weather_forecast/widget/HourlyForecast.dart';
+import 'package:weather_forecast/widget/ForecastWidget.dart';
 
 import 'SettingsPage.dart';
 
@@ -53,28 +51,7 @@ class _ForecastPageState extends State<ForecastPage> {
           Forecast forecast = box.values.last;
           return DefaultTabController(
             length: 3,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                  child: TabPageSelector(
-                    indicatorSize: 6,
-                  ),
-                ),
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      // Current
-                      CurrentForecast(forecast: forecast),
-                      // Hourly for 48h
-                      HourlyForecast(forecast: forecast),
-                      // Daily for 7d
-                      DailyForecast(forecast: forecast),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            child: ForecastWidget(forecast: forecast),
           );
         },
       ),
