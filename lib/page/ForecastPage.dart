@@ -9,7 +9,7 @@ import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/widget/CurrentForecast.dart';
-import 'package:weather_forecast/widget/HourlyListTile.dart';
+import 'package:weather_forecast/widget/HourlyForecast.dart';
 
 import 'SettingsPage.dart';
 
@@ -69,12 +69,7 @@ class _ForecastPageState extends State<ForecastPage> {
                       // Current
                       CurrentForecast(forecast: forecast),
                       // Hourly for 48h
-                      ListView.builder(
-                        padding: EdgeInsets.all(16),
-                        itemCount: forecast.hourly.length,
-                        itemBuilder: (context, index) =>
-                            HourlyListTile(hourly: forecast.hourly[index]),
-                      ),
+                      HourlyForecast(forecast: forecast),
                       // Daily for 7d
                       ListView(
                         padding: EdgeInsets.all(24),
