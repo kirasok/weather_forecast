@@ -64,6 +64,7 @@ class _SettingsPageState extends State<SettingsPage> {
               values: <DateTimeFormat, String>{
                 DateTimeFormat.System: 'System',
                 DateTimeFormat.yyyyMMddHHmm: 'yyyy-MM-dd HH:mm',
+                DateTimeFormat.iso8601: 'ISO 8601',
               },
             ),
             RadioModalSettingsTile(
