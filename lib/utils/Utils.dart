@@ -20,7 +20,8 @@ String toHPa(double pressure) => formatDouble(pressure) + ' hPa';
 
 String toKPa(double pressure) => formatDouble(pressure / 10) + ' kPa';
 
-String toMmHg(double pressure) => formatDouble((pressure * 0.7500616827)) + ' mmHg';
+String toMmHg(double pressure) =>
+    formatDouble((pressure * 0.7500616827)) + ' mmHg';
 
 String toMS(double speed) => formatDouble(speed) + ' m/s';
 
@@ -42,7 +43,7 @@ String getTemp(double temp) {
 
 double getTempWithoutUnit(double temp) {
   Temp format = Settings.getValue<Temp>('temp', Temp.Kelvin);
-  switch(format) {
+  switch (format) {
     case Temp.Kelvin:
       return temp;
     case Temp.Celsius:
@@ -106,5 +107,7 @@ String getDateTime(DateTime dateTime) {
       var string = dateTime.toString();
       string = string.substring(0, string.length - 7);
       return string;
+    case DateTimeFormat.iso8601:
+      return dateTime.toIso8601String();
   }
 }

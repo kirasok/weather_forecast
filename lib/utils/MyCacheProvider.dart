@@ -37,6 +37,8 @@ class MyCacheProvider extends SharePreferenceCache {
           return DateTimeFormat.System;
         case 'DateTimeFormat.yyyyMMddHHmm':
           return DateTimeFormat.yyyyMMddHHmm;
+        case 'DateTimeFormat.iso8601':
+          return DateTimeFormat.iso8601;
         default:
           throw Exception('Unknown format $format');
       }

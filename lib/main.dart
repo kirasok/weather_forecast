@@ -10,7 +10,6 @@ import 'app/MainApp.dart';
 
 // TODO: add welcome screen where user sets key and city
 // TODO: add about screen
-// TODO: add more datetime formats
 // TODO: use local stored weather icons, not from network
 
 void main() async {
