@@ -9,7 +9,6 @@ import 'package:weather_forecast/utils/MyCacheProvider.dart';
 import 'app/MainApp.dart';
 
 // TODO: add welcome screen where user sets key and city
-// TODO: add about screen
 // TODO: use local stored weather icons, not from network
 
 void main() async {
