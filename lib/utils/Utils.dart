@@ -100,9 +100,11 @@ String getDateTime(DateTime dateTime) {
   dateTime = dateTime.toLocal();
   switch (format) {
     case DateTimeFormat.System:
-      // TODO: use System locale
-      return dateTime.toString();
+      var dateFormat = DateFormat.yMd().add_Hm();
+      return dateFormat.format(dateTime);
     case DateTimeFormat.yyyyMMddHHmm:
-      return dateTime.toIso8601String();
+      var string = dateTime.toString();
+      string = string.substring(0, string.length - 7);
+      return string;
   }
 }
