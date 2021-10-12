@@ -16,18 +16,15 @@ Future<Coordinates> fetchCoordinates(http.Client client) async {
 
   if (response.statusCode == 200) {
     return parseCoordinates(response.body);
+  } else if (response.statusCode == 401) {
+    throw Exception(response.statusCode);
   } else {
-    throw Exception("Failed to lad coordinates");
+    throw Exception("Failed to load coordinates ${response.statusCode}");
   }
 }
 
-Coordinates parseCoordinates(String responseBody) {
-  Map<String, dynamic> map = jsonDecode(responseBody);
-  if (map.containsKey('cod'))
-    if (map['cod'] == 401)
-      throw Exception(map['cod']);
-  return Coordinates.fromJson(map);
-}
+Coordinates parseCoordinates(String responseBody) =>
+    Coordinates.fromJson(jsonDecode(responseBody));
 
 Future<Forecast> fetchForecast(http.Client client) async {
   String lat = Settings.getValue('lat', '');
@@ -41,15 +38,12 @@ Future<Forecast> fetchForecast(http.Client client) async {
 
   if (response.statusCode == 200) {
     return parseForecast(response.body);
+  } else if (response.statusCode == 404) {
+    throw Exception(response.statusCode);
   } else {
-    throw Exception('Failed to load forecast');
+    throw Exception('Failed to load forecast ${response.statusCode}');
   }
 }
 
-Forecast parseForecast(String responseBody) {
-  Map<String, dynamic> map = jsonDecode(responseBody);
-  if (map.containsKey('cod'))
-    if (map['cod'] == 404)
-      throw Exception(map['cod']);
-  return Forecast.fromJson(map);
-}
+Forecast parseForecast(String responseBody) =>
+    Forecast.fromJson(jsonDecode(responseBody));
