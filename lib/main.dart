@@ -8,8 +8,10 @@ import 'package:weather_forecast/utils/MyCacheProvider.dart';
 
 import 'app/MainApp.dart';
 
-// TODO: add one time intro screen where user sets key and city
 // TODO: use local stored weather icons, not from network (wait till weather_icon implement feature)
+// TODO: check that api key is not only valid but limit of requests is not over
+// TODO: add daily notifications settings
+// TODO: add weather widget
 
 void main() async {
   await Settings.init(cacheProvider: MyCacheProvider());
