@@ -22,6 +22,10 @@ Future<Coordinates> fetchCoordinates(http.Client client) async {
 }
 
 Coordinates parseCoordinates(String responseBody) {
+  Map<String, dynamic> map = jsonDecode(responseBody);
+  if (map.containsKey('cod'))
+    if (map['cod'] == 401)
+      throw Exception(map['cod']);
   return Coordinates.fromJson(jsonDecode(responseBody));
 }
 
