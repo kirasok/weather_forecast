@@ -12,6 +12,7 @@ import 'app/MainApp.dart';
 // TODO: check that api key is not only valid but limit of requests is not over
 // TODO: add daily notifications settings
 // TODO: add weather widget
+// TODO: add dark theme support
 
 void main() async {
   await Settings.init(cacheProvider: MyCacheProvider());
