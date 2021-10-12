@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Coordinates.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/enum/format/DateTimeFormat.dart';
 import 'package:weather_forecast/enum/units/Pressure.dart';
 import 'package:weather_forecast/enum/units/Speed.dart';
@@ -32,8 +31,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Settings.setValue<String>('lat', coordinates.lat.toString());
             Settings.setValue<String>('lon', coordinates.lon.toString());
             setState(() {});
-            Forecast forecast = await fetchForecast(http.Client());
-            putForecast(forecast);
+            fetchThenPutForecast();
           },
           borderColor: Theme.of(context).colorScheme.secondary,
           errorColor: Theme.of(context).errorColor,
