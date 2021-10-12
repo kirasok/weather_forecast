@@ -16,7 +16,9 @@ Future<Coordinates> fetchCoordinates(http.Client client) async {
 
   if (response.statusCode == 200) {
     return parseCoordinates(response.body);
-  } else if (response.statusCode == 401) {
+  } else if (response.statusCode == 400 ||
+      response.statusCode == 401 ||
+      response.statusCode == 404) {
     throw Exception(response.statusCode);
   } else {
     throw Exception("Failed to load coordinates ${response.statusCode}");
@@ -38,7 +40,7 @@ Future<Forecast> fetchForecast(http.Client client) async {
 
   if (response.statusCode == 200) {
     return parseForecast(response.body);
-  } else if (response.statusCode == 404) {
+  } else if (response.statusCode == 400 || response.statusCode == 404) {
     throw Exception(response.statusCode);
   } else {
     throw Exception('Failed to load forecast ${response.statusCode}');
