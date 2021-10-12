@@ -70,3 +70,6 @@ flutter:
     - README.md
     - LICENSE.md
     - assets/icon/app.png
+    - assets/background/welcome/bottom-left.png
+    - assets/background/welcome/top-left.png
+    - assets/background/welcome/right.png
