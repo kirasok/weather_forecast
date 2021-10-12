@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
+import 'package:weather_forecast/datamodel/Coordinates.dart';
 import 'package:weather_forecast/widget/NextPageButton.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -8,6 +12,10 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
+    var key = '';
+    var city = '';
+
     return Scaffold(
       body: Stack(
         children: [
@@ -32,6 +40,7 @@ class WelcomePage extends StatelessWidget {
                       icon: Icon(Icons.lock),
                       labelText: 'OpenWeatherMap API Key',
                     ),
+                    onChanged: (value) => key = value,
                   ),
                 ),
                 Container(
@@ -61,12 +70,29 @@ class WelcomePage extends StatelessWidget {
                       icon: Icon(Icons.location_on),
                       labelText: 'City',
                     ),
+                    onChanged: (value) => city = value,
                   ),
                 )
               ],
             ),
           ),
-          NextPageButton(onPressed: () {}, size: size),
+          NextPageButton(
+            onPressed: () async {
+              try {
+                await Settings.setValue('api-key', key);
+                Coordinates coordinates = await fetchCoordinates(http.Client());
+                await Settings.setValue<String>(
+                    'lat', coordinates.lat.toString());
+                await Settings.setValue<String>(
+                    'lon', coordinates.lon.toString());
+                await Settings.setValue<String>('city', city);
+                // TODO: fetch forecast
+              } catch (e) {
+                print(e.toString());
+              }
+            },
+            size: size,
+          ),
           Positioned(
             height: size.height * 0.25,
             bottom: -(size.height * 0.08),
