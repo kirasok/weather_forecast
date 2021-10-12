@@ -90,6 +90,7 @@ class WelcomePage extends StatelessWidget {
                     'lon', coordinates.lon.toString());
                 await Settings.setValue<String>('city', city);
                 await fetchThenPutForecast();
+                await Settings.setValue('isIntroPlayed', true);
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => ForecastPage(),
