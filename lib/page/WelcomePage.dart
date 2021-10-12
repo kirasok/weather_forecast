@@ -3,6 +3,7 @@ import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
+import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Coordinates.dart';
 import 'package:weather_forecast/widget/NextPageButton.dart';
 
@@ -86,7 +87,7 @@ class WelcomePage extends StatelessWidget {
                 await Settings.setValue<String>(
                     'lon', coordinates.lon.toString());
                 await Settings.setValue<String>('city', city);
-                // TODO: fetch forecast
+                await fetchThenPutForecast();
               } catch (e) {
                 print(e.toString());
               }

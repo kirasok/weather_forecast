@@ -47,5 +47,9 @@ Future<Forecast> fetchForecast(http.Client client) async {
 }
 
 Forecast parseForecast(String responseBody) {
-  return Forecast.fromJson(jsonDecode(responseBody));
+  Map<String, dynamic> map = jsonDecode(responseBody);
+  if (map.containsKey('cod'))
+    if (map['cod'] == 404)
+      throw Exception(map['cod']);
+  return Forecast.fromJson(map);
 }
