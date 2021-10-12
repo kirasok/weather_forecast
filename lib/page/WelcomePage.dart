@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
 import 'package:weather_forecast/database/HiveUtils.dart';
 import 'package:weather_forecast/datamodel/Coordinates.dart';
+import 'package:weather_forecast/page/ForecastPage.dart';
 import 'package:weather_forecast/widget/NextPageButton.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -89,6 +90,11 @@ class WelcomePage extends StatelessWidget {
                     'lon', coordinates.lon.toString());
                 await Settings.setValue<String>('city', city);
                 await fetchThenPutForecast();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => ForecastPage(),
+                  ),
+                );
               } catch (e) {
                 var code = int.parse(e.toString().substring(11));
                 switch (code) {
