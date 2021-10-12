@@ -16,6 +16,13 @@ class MainApp extends StatelessWidget {
         elevation: 5,
         margin: EdgeInsets.all(12),
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(24),
+          ),
+        ),
+      ),
     );
 
     var isIntroPlayed = Settings.getValue<bool>('isIntroPlayed', false);
