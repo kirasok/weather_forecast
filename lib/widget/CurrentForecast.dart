@@ -70,16 +70,19 @@ class CurrentForecast extends StatelessWidget {
               // Wind
               Expanded(
                 child: Card(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      WindIcon(
-                        degree: forecast.current.wind_deg,
-                      ),
-                      Text('Wind speed: ' + getSpeed(forecast.current.wind_speed)),
-                      getWindGust(forecast.current.wind_gust),
-                    ],
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        WindIcon(
+                          degree: forecast.current.wind_deg,
+                        ),
+                        Text('Wind speed: ' + getSpeed(forecast.current.wind_speed)),
+                        getWindGust(forecast.current.wind_gust),
+                      ],
+                    ),
                   ),
                 ),
               ),

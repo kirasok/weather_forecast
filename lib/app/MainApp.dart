@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
       cardTheme: CardTheme.of(context).copyWith(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
         elevation: 5,
-        margin: EdgeInsets.all(12),
+        margin: EdgeInsets.all(8),
       ),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
