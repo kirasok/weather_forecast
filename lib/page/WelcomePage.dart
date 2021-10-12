@@ -81,6 +81,7 @@ class WelcomePage extends StatelessWidget {
             onPressed: () async {
               try {
                 await Settings.setValue('api-key', key);
+                await Settings.setValue('city', city);
                 Coordinates coordinates = await fetchCoordinates(http.Client());
                 await Settings.setValue<String>(
                     'lat', coordinates.lat.toString());
@@ -89,7 +90,24 @@ class WelcomePage extends StatelessWidget {
                 await Settings.setValue<String>('city', city);
                 await fetchThenPutForecast();
               } catch (e) {
-                print(e.toString());
+                var code = int.parse(e.toString().substring(11));
+                switch (code) {
+                  case 401:
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Wrong API key'),
+                      ),
+                    );
+                    break;
+                  case 400:
+                  case 404:
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Wrong city name'),
+                      ),
+                    );
+                    break;
+                }
               }
             },
             size: size,
