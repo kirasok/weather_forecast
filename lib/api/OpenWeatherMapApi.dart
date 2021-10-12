@@ -26,7 +26,7 @@ Coordinates parseCoordinates(String responseBody) {
   if (map.containsKey('cod'))
     if (map['cod'] == 401)
       throw Exception(map['cod']);
-  return Coordinates.fromJson(jsonDecode(responseBody));
+  return Coordinates.fromJson(map);
 }
 
 Future<Forecast> fetchForecast(http.Client client) async {
