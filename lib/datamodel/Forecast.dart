@@ -542,7 +542,7 @@ class Daily extends HiveObject {
       wind_deg: json['wind_deg'] * 1.0,
       clouds: json['clouds'] * 1.0,
       uvi: json['uvi'] * 1.0,
-      pop: json['pop'] * 1.0,
+      pop: json['pop'] * 100.0,
       rain: json['rain'] * 1.0,
       snow: json['snow'] * 1.0,
       weather: Weather.fromJson(json['weather'][0]),
