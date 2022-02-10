@@ -1,9 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/utils/Utils.dart';
 import 'package:weather_icons/weather_icons.dart';
+
+import 'WeatherIcon.dart';
 
 class CurrentForecast extends StatelessWidget {
   final Forecast forecast;
@@ -30,17 +31,8 @@ class CurrentForecast extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CachedNetworkImage(
-                      imageUrl:
-                          'https://openweathermap.org/img/wn/${forecast.current.weather.icon}@2x.png',
-                      placeholder: (_, __) => SizedBox(
-                        height: 100,
-                        width: 100,
-                      ),
-                      errorWidget: (_, __, ___) => SizedBox(
-                        height: 100,
-                        width: 100,
-                      ),
+                    WeatherIcon(
+                      icon: forecast.current.weather.icon,
                     ),
                     Text(
                       getTemp(forecast.current.temp),
@@ -79,7 +71,8 @@ class CurrentForecast extends StatelessWidget {
                         WindIcon(
                           degree: forecast.current.wind_deg,
                         ),
-                        Text('Wind speed: ' + getSpeed(forecast.current.wind_speed)),
+                        Text('Wind speed: ' +
+                            getSpeed(forecast.current.wind_speed)),
                         getWindGust(forecast.current.wind_gust),
                       ],
                     ),
@@ -115,8 +108,10 @@ class CurrentForecast extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Humidity: ' + toPercentage(forecast.current.humidity)),
-                        Text('Dew Point: ' + getTemp(forecast.current.dew_point)),
+                        Text('Humidity: ' +
+                            toPercentage(forecast.current.humidity)),
+                        Text('Dew Point: ' +
+                            getTemp(forecast.current.dew_point)),
                       ],
                     ),
                   ),
@@ -151,7 +146,8 @@ class CurrentForecast extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(8),
                     child: Center(
-                      child: Text('Clouds: ' + toPercentage(forecast.current.clouds)),
+                      child: Text(
+                          'Clouds: ' + toPercentage(forecast.current.clouds)),
                     ),
                   ),
                 ),
@@ -163,7 +159,8 @@ class CurrentForecast extends StatelessWidget {
                     padding: EdgeInsets.all(8),
                     child: Center(
                       child: Text(
-                        'Visibility: ' + toDistance(forecast.current.visibility),
+                        'Visibility: ' +
+                            toDistance(forecast.current.visibility),
                       ),
                     ),
                   ),
