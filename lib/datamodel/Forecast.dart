@@ -389,7 +389,7 @@ class Hourly extends HiveObject {
 
   static Hourly fromJson(Map<String, dynamic> json) => Hourly(
         current: Current.fromJson(json),
-        pop: json['pop'] * 1.0,
+        pop: json['pop'] * 100.0,
       );
 }
 
