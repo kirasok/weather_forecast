@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_forecast/datamodel/Forecast.dart';
 import 'package:weather_forecast/utils/Utils.dart';
+import 'package:weather_forecast/widget/WeatherIcon.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class HourlyListTile extends StatelessWidget {
@@ -29,8 +30,7 @@ class HourlyListTile extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
                   child: Text(
                     getDateTime(
-                      DateTime.fromMillisecondsSinceEpoch(
-                          hourly.current.dt,
+                      DateTime.fromMillisecondsSinceEpoch(hourly.current.dt,
                           isUtc: true),
                     ),
                     style: Theme.of(context).textTheme.overline,
@@ -60,8 +60,8 @@ class HourlyListTile extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: Image.network(
-                'https://openweathermap.org/img/wn/${hourly.current.weather.icon}@2x.png',
+              child: WeatherIcon(
+                icon: hourly.current.weather.icon,
               ),
             ),
           ],
