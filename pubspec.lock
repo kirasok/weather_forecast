@@ -233,14 +233,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.4"
-  dynamic_colors:
+  dynamic_color:
     dependency: "direct main"
     description:
-      name: dynamic_colors
-      sha256: "954dee9e8e1e09aed829095559354f26248b169ab5b372bbfef28a4370e37dd0"
+      name: dynamic_color
+      sha256: "74dff1435a695887ca64899b8990004f8d1232b0e84bfc4faa1fdda7c6f57cc1"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "1.6.5"
   fake_async:
     dependency: transitive
     description:
