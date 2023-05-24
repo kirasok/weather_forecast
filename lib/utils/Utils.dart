@@ -6,7 +6,7 @@ import 'package:weather_forecast/enum/units/Speed.dart';
 import 'package:weather_forecast/enum/units/Temp.dart';
 
 String formatDouble(double value) {
-  NumberFormat formatter = NumberFormat();
+  final formatter = NumberFormat();
   formatter.minimumFractionDigits = 0;
   formatter.maximumFractionDigits = 2;
   return formatter.format(value);
@@ -32,7 +32,7 @@ String toPercentage(double percentage) => formatDouble(percentage) + '%';
 String toDistance(double distance) => formatDouble(distance) + ' m';
 
 String getTemp(double temp) {
-  Temp format = Settings.getValue<Temp>('temp', Temp.Kelvin);
+  final format = Settings.getValue<Temp>('temp') ?? Temp.Kelvin;
   switch (format) {
     case Temp.Kelvin:
       return toKelvin(temp);
@@ -42,7 +42,7 @@ String getTemp(double temp) {
 }
 
 double getTempWithoutUnit(double temp) {
-  Temp format = Settings.getValue<Temp>('temp', Temp.Kelvin);
+  final format = Settings.getValue<Temp>('temp') ?? Temp.Kelvin;
   switch (format) {
     case Temp.Kelvin:
       return temp;
@@ -52,7 +52,7 @@ double getTempWithoutUnit(double temp) {
 }
 
 String getPressure(double pressure) {
-  Pressure format = Settings.getValue<Pressure>('pressure', Pressure.hPa);
+  final format = Settings.getValue<Pressure>('pressure') ?? Pressure.hPa;
   switch (format) {
     case Pressure.hPa:
       return toHPa(pressure);
@@ -64,7 +64,7 @@ String getPressure(double pressure) {
 }
 
 double getPressureWithoutUnit(double pressure) {
-  Pressure format = Settings.getValue<Pressure>('pressure', Pressure.hPa);
+  final format = Settings.getValue<Pressure>('pressure') ?? Pressure.hPa;
   switch (format) {
     case Pressure.hPa:
       return pressure;
@@ -76,7 +76,7 @@ double getPressureWithoutUnit(double pressure) {
 }
 
 String getSpeed(double speed) {
-  Speed format = Settings.getValue<Speed>('speed', Speed.ms);
+  final format = Settings.getValue<Speed>('speed') ?? Speed.ms;
   switch (format) {
     case Speed.ms:
       return toMS(speed);
@@ -86,7 +86,7 @@ String getSpeed(double speed) {
 }
 
 double getSpeedWithoutUnit(double speed) {
-  Speed format = Settings.getValue<Speed>('speed', Speed.ms);
+  final format = Settings.getValue<Speed>('speed') ?? Speed.ms;
   switch (format) {
     case Speed.ms:
       return speed;
@@ -96,8 +96,8 @@ double getSpeedWithoutUnit(double speed) {
 }
 
 String getDateTime(DateTime dateTime) {
-  DateTimeFormat format =
-      Settings.getValue<DateTimeFormat>('datetime', DateTimeFormat.System);
+  final format =
+      Settings.getValue<DateTimeFormat>('datetime') ?? DateTimeFormat.System;
   dateTime = dateTime.toLocal();
   switch (format) {
     case DateTimeFormat.System:

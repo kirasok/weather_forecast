@@ -3,10 +3,9 @@ import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl_standalone.dart';
 import 'package:weather_forecast/Constants.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/data/datamodel/Forecast.dart';
+import 'package:weather_forecast/ui/app.dart';
 import 'package:weather_forecast/utils/MyCacheProvider.dart';
-
-import 'app/MainApp.dart';
 
 // TODO: use local stored weather icons, not from network (wait till weather_icon implement feature)
 // TODO: check that api key is not only valid but limit of requests is not over

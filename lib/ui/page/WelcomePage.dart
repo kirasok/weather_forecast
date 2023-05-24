@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
-import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
-import 'package:weather_forecast/database/HiveUtils.dart';
-import 'package:weather_forecast/datamodel/Coordinates.dart';
-import 'package:weather_forecast/page/ForecastPage.dart';
+import 'package:weather_forecast/data/api/OpenWeatherMapApi.dart';
+import 'package:weather_forecast/data/database/HiveUtils.dart';
+import 'package:weather_forecast/data/datamodel/Coordinates.dart';
 import 'package:weather_forecast/widget/NextPageButton.dart';
+
+import 'ForecastPage.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -30,8 +31,8 @@ class WelcomePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
-                      .headline5!
-                      .apply(fontWeightDelta: 3),
+                      .titleLarge
+                      ?.apply(fontWeightDelta: 3),
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(32, 32, 32, 4),
@@ -51,13 +52,17 @@ class WelcomePage extends StatelessWidget {
                   child: InkWell(
                     child: Text(
                       'Where to get one?',
-                      style: Theme.of(context).textTheme.overline!.apply(
+                      style: Theme.of(context).textTheme.labelSmall?.apply(
                             color: Theme.of(context).colorScheme.secondary,
                             fontSizeFactor: 1.2,
                           ),
                     ),
-                    onTap: () => launch(
-                      'https://github.com/kirillmokretsov/weather_forecast/blob/master/README.md#get-openweathermap-api-key',
+                    onTap: () => launchUrl(
+                      Uri.https(
+                        'github.com',
+                        "/kirillmokretsov/weather_forecast/blob/master/README.md",
+                        {'#': 'get-openweathermap-api-key'},
+                      ),
                     ),
                   ),
                 ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
-import 'package:weather_forecast/database/HiveUtils.dart';
-import 'package:weather_forecast/datamodel/Coordinates.dart';
+import 'package:weather_forecast/data/api/OpenWeatherMapApi.dart';
+import 'package:weather_forecast/data/database/HiveUtils.dart';
+import 'package:weather_forecast/data/datamodel/Coordinates.dart';
 import 'package:weather_forecast/enum/format/DateTimeFormat.dart';
 import 'package:weather_forecast/enum/units/Pressure.dart';
 import 'package:weather_forecast/enum/units/Speed.dart';
@@ -34,23 +34,23 @@ class _SettingsPageState extends State<SettingsPage> {
             fetchThenPutForecast();
           },
           borderColor: Theme.of(context).colorScheme.secondary,
-          errorColor: Theme.of(context).errorColor,
+          errorColor: Theme.of(context).colorScheme.error,
         ),
         // TODO: use same TextStyle
         ListTile(
           title: Text('Longitude'),
-          subtitle: Text(Settings.getValue('lon', '')),
+          subtitle: Text(Settings.getValue('lon') ?? ''),
         ),
         ListTile(
           title: Text('Latitude'),
-          subtitle: Text(Settings.getValue('lat', '')),
+          subtitle: Text(Settings.getValue('lat') ?? ''),
         ),
         TextInputSettingsTile(
           title: 'API Key',
           settingKey: 'api-key',
           obscureText: true,
           borderColor: Theme.of(context).colorScheme.secondary,
-          errorColor: Theme.of(context).errorColor,
+          errorColor: Theme.of(context).colorScheme.error,
         ),
         SettingsGroup(
           title: 'Localization',

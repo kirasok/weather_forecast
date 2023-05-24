@@ -1,6 +1,7 @@
-import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:community_charts_flutter/community_charts_flutter.dart'
+    as charts;
 import 'package:flutter/material.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/data/datamodel/Forecast.dart';
 import 'package:weather_forecast/utils/Utils.dart';
 import 'package:weather_icons/weather_icons.dart';
 
@@ -36,7 +37,7 @@ class CurrentForecast extends StatelessWidget {
                     ),
                     Text(
                       getTemp(forecast.current.temp),
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ],
                 ),
@@ -52,7 +53,7 @@ class CurrentForecast extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(24, 8, 0, 8),
           child: Text(
             'Today Details',
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.labelMedium,
           ),
         ),
         IntrinsicHeight(

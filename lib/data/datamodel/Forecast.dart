@@ -1,6 +1,7 @@
 import 'dart:core';
 
-import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:community_charts_flutter/community_charts_flutter.dart'
+    as charts;
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_forecast/utils/Utils.dart';
 

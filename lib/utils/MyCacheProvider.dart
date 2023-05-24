@@ -6,7 +6,7 @@ import 'package:weather_forecast/enum/units/Temp.dart';
 
 class MyCacheProvider extends SharePreferenceCache {
   @override
-  Future<void> setObject<T>(String key, T value) {
+  Future<void> setObject<T>(String key, T? value) {
     if (value is DateTimeFormat) return setDateTimeFormat(key, value);
     if (value is Pressure) return setPressure(key, value);
     if (value is Speed) return setSpeed(key, value);
@@ -15,19 +15,19 @@ class MyCacheProvider extends SharePreferenceCache {
   }
 
   @override
-  T getValue<T>(String key, T defaultValue) {
+  T? getValue<T>(String key, {T? defaultValue}) {
     if (defaultValue is DateTimeFormat) return getDateTimeFormat(key) as T;
     if (defaultValue is Pressure) return getPressure(key) as T;
     if (defaultValue is Speed) return getSpeed(key) as T;
     if (defaultValue is Temp) return getTemp(key) as T;
-    return super.getValue<T>(key, defaultValue);
+    return super.getValue<T>(key, defaultValue: defaultValue);
   }
 
-  Future<void> setDateTimeFormat(String key, DateTimeFormat? value,
-      {DateTimeFormat? defaultValue}) {
-    return super.setString(key, value.toString(),
-        defaultValue: defaultValue.toString());
-  }
+  Future<void> setDateTimeFormat(String key, DateTimeFormat? value) =>
+      super.setString(
+        key,
+        value.toString(),
+      );
 
   DateTimeFormat? getDateTimeFormat(String key) {
     String? format = super.getString(key);
@@ -46,11 +46,14 @@ class MyCacheProvider extends SharePreferenceCache {
       return null;
   }
 
-  Future<void> setPressure(String key, Pressure? value,
-      {Pressure? defaultValue}) {
-    return super.setString(key, value.toString(),
-        defaultValue: defaultValue.toString());
-  }
+  Future<void> setPressure(
+    String key,
+    Pressure? value,
+  ) =>
+      super.setString(
+        key,
+        value.toString(),
+      );
 
   Pressure? getPressure(String key) {
     String? pressure = super.getString(key);
@@ -69,10 +72,8 @@ class MyCacheProvider extends SharePreferenceCache {
       return null;
   }
 
-  Future<void> setSpeed(String key, Speed? value, {Speed? defaultValue}) {
-    return super.setString(key, value.toString(),
-        defaultValue: defaultValue.toString());
-  }
+  Future<void> setSpeed(String key, Speed? value) =>
+      super.setString(key, value.toString());
 
   Speed? getSpeed(String key) {
     String? speed = super.getString(key);
@@ -89,10 +90,8 @@ class MyCacheProvider extends SharePreferenceCache {
       return null;
   }
 
-  Future<void> setTemp(String key, Temp? value, {Temp? defaultValue}) {
-    return super.setString(key, value.toString(),
-        defaultValue: defaultValue.toString());
-  }
+  Future<void> setTemp(String key, Temp? value) =>
+      super.setString(key, value.toString());
 
   Temp? getTemp(String key) {
     String? temp = super.getString(key);

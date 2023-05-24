@@ -1,6 +1,7 @@
-import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:community_charts_flutter/community_charts_flutter.dart'
+    as charts;
 import 'package:flutter/material.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/data/datamodel/Forecast.dart';
 
 class DailyForecast extends StatelessWidget {
   final Forecast forecast;

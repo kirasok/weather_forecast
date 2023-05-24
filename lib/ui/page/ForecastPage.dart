@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_forecast/Constants.dart';
-import 'package:weather_forecast/database/HiveUtils.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/data/database/HiveUtils.dart';
+import 'package:weather_forecast/data/datamodel/Forecast.dart';
 import 'package:weather_forecast/widget/AppbarIconButton.dart';
 import 'package:weather_forecast/widget/ForecastWidget.dart';
 

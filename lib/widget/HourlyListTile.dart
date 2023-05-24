@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/data/datamodel/Forecast.dart';
 import 'package:weather_forecast/utils/Utils.dart';
 import 'package:weather_forecast/widget/WeatherIcon.dart';
 import 'package:weather_icons/weather_icons.dart';
@@ -33,7 +33,7 @@ class HourlyListTile extends StatelessWidget {
                       DateTime.fromMillisecondsSinceEpoch(hourly.current.dt,
                           isUtc: true),
                     ),
-                    style: Theme.of(context).textTheme.overline,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                 ),
                 Row(

@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_forecast/datamodel/Coordinates.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
+
+import '../datamodel/Coordinates.dart';
+import '../datamodel/Forecast.dart';
 
 Future<Coordinates> fetchCoordinates(http.Client client) async {
-  String city = Settings.getValue<String>('city', 'London');
-  String key = Settings.getValue<String>('api-key', '');
+  final city = Settings.getValue<String>('city') ?? 'London';
+  final key = Settings.getValue<String>('api-key') ?? '';
 
   final response = await client.get(
     Uri.parse(
@@ -29,9 +30,9 @@ Coordinates parseCoordinates(String responseBody) =>
     Coordinates.fromJson(jsonDecode(responseBody));
 
 Future<Forecast> fetchForecast(http.Client client) async {
-  String lat = Settings.getValue('lat', '');
-  String lon = Settings.getValue('lon', '');
-  String key = Settings.getValue<String>('api-key', '');
+  final lat = Settings.getValue('lat') ?? '';
+  final lon = Settings.getValue('lon') ?? '';
+  final key = Settings.getValue<String>('api-key') ?? '';
 
   final response = await client.get(
     Uri.parse(

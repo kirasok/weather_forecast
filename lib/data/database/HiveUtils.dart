@@ -1,9 +1,9 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_forecast/api/OpenWeatherMapApi.dart';
-import 'package:weather_forecast/datamodel/Forecast.dart';
+import 'package:weather_forecast/Constants.dart';
 
-import '../Constants.dart';
+import '../api/OpenWeatherMapApi.dart';
+import '../datamodel/Forecast.dart';
 
 Future<void> putForecast(Forecast forecast) async {
   Hive.box(Constants.forecast_box)

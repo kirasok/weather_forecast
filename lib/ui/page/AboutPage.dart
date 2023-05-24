@@ -25,7 +25,7 @@ class AboutPage {
       applicationLegalese: 'Copyright © Kirill Mokretsov, {{ year }}',
       applicationDescription: Text(
         'Weather Forecast using OpenWeatherMap API',
-        style: Theme.of(context).textTheme.bodyText2,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       children: <Widget>[
         MarkdownPageListTile(
