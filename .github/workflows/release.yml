@@ -154,7 +154,7 @@ jobs:
         uses: softprops/action-gh-release@v2.0.4
         with:
           tag_name: ${{ needs.version.outputs.version }}
-          bodyFile: ${{steps.download.outputs.download-path}}/CHANGELOG.md
+          body_path: ${{steps.download.outputs.download-path}}/CHANGELOG.md
           files: |
             ${{steps.download.outputs.download-path}}/**/*
   build-web:
