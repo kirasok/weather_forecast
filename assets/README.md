@@ -28,7 +28,7 @@ Run:
 
 ```sh
 git clone https://github.com/kirasok/weather_forecast.git
-cd todo_list
+cd weather_forecast
 flutter pub get
 flutter build apk --obfuscate --split-debug-info=split_debug_info
 ```

@@ -32151,7 +32151,7 @@ while(true)switch(s){case 0:n=t.N
 n=A.aG(["year",B.e.k(A.eL(new A.aU(Date.now(),!1)))],n,n)
 p=A.b0("Weather Forecast",null,null,null,null,null,null)
 o=A.dd(A.Qr("assets/icon/app.png",B.mS,null,null),100,100)
-q=A.a5M(A.b0("Weather Forecast using OpenWeatherMap API",null,null,null,A.Z(a).p3.z,null,null),o,"Copyright \xa9 Kirill Mokretsov, {{ year }}","Weather Forecast","1.0.0",A.a([A.aP7("README.md",A.im(B.HU,null,null,null),A.b0("View README",null,null,null,null,null,null)),A.aP7("LICENSE.md",A.im(B.HL,null,null,null),A.b0("View license",null,null,null,null,null,null)),new A.R6(A.im(B.HM,null,null,null),A.b0("Open source licenses",null,null,null,null,null,null),null)],t.p),a,p,n)
+q=A.a5M(A.b0("Weather Forecast using OpenWeatherMap API",null,null,null,A.Z(a).p3.z,null,null),o,"Copyright \xa9 Kira Sokolova, {{ year }}","Weather Forecast","1.0.0",A.a([A.aP7("README.md",A.im(B.HU,null,null,null),A.b0("View README",null,null,null,null,null,null)),A.aP7("LICENSE.md",A.im(B.HL,null,null,null),A.b0("View license",null,null,null,null,null,null)),new A.R6(A.im(B.HM,null,null,null),A.b0("Open source licenses",null,null,null,null,null,null),null)],t.p),a,p,n)
 s=1
 break
 case 1:return A.K(q,r)}})
@@ -105216,7 +105216,7 @@ A.auD.prototype={
 $1(a){return this.a.b=a},
 $S:18}
 A.auE.prototype={
-$0(){return A.aG8(A.b6j("https","github.com","/kirillmokretsov/weather_forecast/blob/master/README.md",A.aG(["#","get-openweathermap-api-key"],t.N,t.z)))},
+$0(){return A.aG8(A.b6j("https","github.com","/kirasok/weather_forecast/blob/main/README.md",A.aG(["#","get-openweathermap-api-key"],t.N,t.z)))},
 $S:0}
 A.auF.prototype={
 $1(a){return this.a.a=a},
