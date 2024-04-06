@@ -27,7 +27,7 @@ Follow steps to [sign your app](https://flutter.dev/docs/deployment/android#sign
 Run:
 
 ```sh
-git clone https://github.com/kirillmokretsov/todo_list.git
+git clone https://github.com/kirasok/weather_forecast.git
 cd todo_list
 flutter pub get
 flutter build apk --obfuscate --split-debug-info=split_debug_info
