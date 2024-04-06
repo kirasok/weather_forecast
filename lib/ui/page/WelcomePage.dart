@@ -60,7 +60,7 @@ class WelcomePage extends StatelessWidget {
                     onTap: () => launchUrl(
                       Uri.https(
                         'github.com',
-                        "/kirillmokretsov/weather_forecast/blob/master/README.md",
+                        "/kirasok/weather_forecast/blob/main/README.md",
                         {'#': 'get-openweathermap-api-key'},
                       ),
                     ),

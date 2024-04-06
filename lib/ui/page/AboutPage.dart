@@ -22,7 +22,7 @@ class AboutPage {
           fit: BoxFit.scaleDown,
         ),
       ),
-      applicationLegalese: 'Copyright © Kirill Mokretsov, {{ year }}',
+      applicationLegalese: 'Copyright © Kira Sokolova, {{ year }}',
       applicationDescription: Text(
         'Weather Forecast using OpenWeatherMap API',
         style: Theme.of(context).textTheme.bodyMedium,
