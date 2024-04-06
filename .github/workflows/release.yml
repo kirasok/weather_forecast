@@ -94,16 +94,16 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
       - name: Start Android Release Build
-        run: flutter build apk
+        run: flutter build apk --obfuscate --split-debug-info=split_debug_info
       - name: Rename apk
         shell: bash
         run: |
-          mv build/app/outputs/flutter-apk/app-release.apk io.github.kirasok.orioks.apk
+          mv build/app/outputs/flutter-apk/app-release.apk io.github.kirasok.weather_forecast.apk
       - name: Upload Android Release
         uses: actions/upload-artifact@v4
         with:
           name: android-release
-          path: io.github.kirasok.orioks.apk
+          path: io.github.kirasok.weather_forecast.apk
   build-linux:
     name: Build linux package
     runs-on: ubuntu-latest
@@ -130,16 +130,16 @@ jobs:
       - name: Configure Flutter for Linux
         run: flutter config --enable-linux-desktop
       - name: Start Linux Release Build
-        run: flutter build linux
+        run: flutter build linux --obfuscate --split-debug-info=split_debug_info
       - name: Zip Linux Release
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r io.github.kirasok.orioks.zip build/linux/x64/release/bundle
+          args: zip -qq -r io.github.kirasok.weather_forecast.zip build/linux/x64/release/bundle
       - name: Upload Linux Release
         uses: actions/upload-artifact@v4
         with:
           name: linux-release
-          path: io.github.kirasok.orioks.zip
+          path: io.github.kirasok.weather_forecast.zip
   deploy:
     name: Deploy Android Build
     needs: [build-apk, build-linux, changelog, version]
