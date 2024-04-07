@@ -9,6 +9,10 @@ An app that shows the current weather, 1-hour detailed weather forecast for 48 h
 
 ## Get OpenWeatherMap API key
 
+> [!warning]
+> This app supports only v2.5 of OneCall API  
+> OpenWeatherMap **doesn't allow new accounts** to use v2.5 of OneCall API
+
 This app uses OpenWeatherMap API so you need it's key.  
 Follow this steps if you don't have one:
 
