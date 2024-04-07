@@ -10,14 +10,14 @@ import 'package:weather_forecast/widget/NextPageButton.dart';
 import 'ForecastPage.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  WelcomePage({Key? key}) : super(key: key);
+
+  final TextEditingController _keyController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
-    var key = '';
-    var city = '';
 
     return Scaffold(
       body: Stack(
@@ -43,7 +43,7 @@ class WelcomePage extends StatelessWidget {
                       icon: Icon(Icons.lock),
                       labelText: 'OpenWeatherMap API Key',
                     ),
-                    onChanged: (value) => key = value,
+                    controller: _keyController,
                   ),
                 ),
                 Container(
@@ -77,7 +77,7 @@ class WelcomePage extends StatelessWidget {
                       icon: Icon(Icons.location_on),
                       labelText: 'City',
                     ),
-                    onChanged: (value) => city = value,
+                    controller: _cityController,
                   ),
                 )
               ],
@@ -86,6 +86,8 @@ class WelcomePage extends StatelessWidget {
           NextPageButton(
             onPressed: () async {
               try {
+                final key = _keyController.value.text.toString();
+                final city = _cityController.value.text.toString();
                 await Settings.setValue('api-key', key);
                 await Settings.setValue('city', city);
                 Coordinates coordinates = await fetchCoordinates(http.Client());
@@ -93,7 +95,6 @@ class WelcomePage extends StatelessWidget {
                     'lat', coordinates.lat.toString());
                 await Settings.setValue<String>(
                     'lon', coordinates.lon.toString());
-                await Settings.setValue<String>('city', city);
                 await fetchThenPutForecast();
                 await Settings.setValue('isIntroPlayed', true);
                 Navigator.of(context).pushReplacement(
