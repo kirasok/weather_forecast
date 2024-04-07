@@ -30,9 +30,9 @@ Coordinates parseCoordinates(String responseBody) =>
     Coordinates.fromJson(jsonDecode(responseBody));
 
 Future<Forecast> fetchForecast(http.Client client) async {
-  final lat = Settings.getValue('lat') ?? '';
-  final lon = Settings.getValue('lon') ?? '';
-  final key = Settings.getValue<String>('api-key') ?? '';
+  final lat = Settings.getValue<String>('lat');
+  final lon = Settings.getValue<String>('lon');
+  final key = Settings.getValue<String>('api-key');
 
   final response = await client.get(
     Uri.parse(
@@ -44,7 +44,7 @@ Future<Forecast> fetchForecast(http.Client client) async {
   } else if (response.statusCode == 400 || response.statusCode == 404) {
     throw Exception(response.statusCode);
   } else {
-    throw Exception('Failed to load forecast ${response.statusCode}');
+    throw Exception('Failed to load forecast ${response.body}');
   }
 }
 
